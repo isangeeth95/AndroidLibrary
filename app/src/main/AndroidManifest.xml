@@ -23,6 +23,13 @@
         </activity>
         <activity android:name=".second" />
         <activity android:name=".third" />
+        <activity android:name=".fourth" />
+        <activity android:name=".AddEBook" />
+        <activity
+            android:name=".select"
+            android:label="@string/title_activity_select" />
+        <activity android:name=".EditEBook" />
+        <activity android:name=".DeleteEBook"></activity>
     </application>
 
 </manifest>

@@ -26,6 +26,7 @@ public class CATEGORIES extends AppCompatActivity implements View.OnClickListene
         Button button6 = findViewById(R.id.button6);
         Button button7 = findViewById(R.id.button7);
         Button button8 = findViewById(R.id.button8);
+        Button button9 = findViewById(R.id.button9);
 
         button.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -35,8 +36,9 @@ public class CATEGORIES extends AppCompatActivity implements View.OnClickListene
         button6.setOnClickListener(this);
         button7.setOnClickListener(this);
         button8.setOnClickListener(this);
+        button9.setOnClickListener(this);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent int1 = new Intent(CATEGORIES.this,second.class);
@@ -52,6 +54,21 @@ public class CATEGORIES extends AppCompatActivity implements View.OnClickListene
             }
         });
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent int3 = new Intent(CATEGORIES.this,fourth.class);
+                startActivity(int3);
+            }
+        });
+
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent int4 = new Intent(CATEGORIES.this,select.class);
+                startActivity(int4);
+            }
+        });
     }
 
     @Override

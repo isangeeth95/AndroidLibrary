@@ -5,48 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#93dff9"
-    tools:context=".second">
+    tools:context=".DeleteEBook">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="270dp"
-        android:layout_height="27dp"
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Other"
+        android:text="ISBN"
         android:textColor="@android:color/background_dark"
         android:textSize="19sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.162"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.020" />
+        app:layout_constraintVertical_bias="0.324" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="368dp"
-        android:layout_height="2dp"
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginTop="8dp"
-        android:background="#033d50"
+        android:ems="10"
+        android:hint="ISBN"
+        android:inputType="text"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.080"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintVertical_bias="0.311" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycleview"
-        android:layout_width="match_parent"
-        android:layout_height="442dp"
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:text="DELETE EBOOK"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="0dp"></android.support.v7.widget.RecyclerView>
-
+        app:layout_constraintVertical_bias="0.536" />
 
 </android.support.constraint.ConstraintLayout>
