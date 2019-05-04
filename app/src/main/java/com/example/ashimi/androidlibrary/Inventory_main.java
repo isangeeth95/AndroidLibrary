@@ -23,7 +23,7 @@ public class Inventory_main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent_view_book=new Intent(Inventory_main.this, CATEGORIES.class);
+                Intent intent_view_book=new Intent(Inventory_main.this, Inventory_view_book.class);
                 startActivity(intent_view_book);
             }
         });
