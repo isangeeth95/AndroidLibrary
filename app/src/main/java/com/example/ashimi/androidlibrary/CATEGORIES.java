@@ -17,6 +17,7 @@ public class CATEGORIES extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
+Toast.makeText( CATEGORIES.this, "FireBase connection Success", Toast.LENGTH_LONG ).show();
 
         Button button = findViewById(R.id.button);
         Button button2 = findViewById(R.id.button2);

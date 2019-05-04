@@ -13,6 +13,7 @@ public class s_homepage extends AppCompatActivity {
 
     LinearLayout category_view;
     LinearLayout login_view;
+    LinearLayout inventory_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class s_homepage extends AppCompatActivity {
 
         category_view = (LinearLayout) findViewById(R.id.see_category);
         login_view = (LinearLayout) findViewById(R.id.membership);
+        inventory_view = (LinearLayout) findViewById(R.id.inventory);
 
         category_view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +40,16 @@ public class s_homepage extends AppCompatActivity {
                 startActivity(intent_login_view);
             }
         });
+
+        inventory_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_inventory_view=new Intent(s_homepage.this, Inventory_main.class);
+                startActivity(intent_inventory_view);
+            }
+        });
+
+
     }
 
 }

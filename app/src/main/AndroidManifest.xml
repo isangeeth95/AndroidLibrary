@@ -23,6 +23,8 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".s_login" />
         <activity android:name=".s_homepage" />
+        <activity android:name=".Inventory_main"/>
+        <activity android:name=".Inventory_add_book"/>
         <activity android:name=".CATEGORIES">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
