@@ -12,29 +12,22 @@ import android.widget.Toast;
 
 public class s_login extends AppCompatActivity {
 
+    EditText email;
+    EditText password;
+    Button login_btn;
+    Button register_btn;
+    DataBaseHelper db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_login);
 
-        TextView registration;
-        final Button register_btn;
-        final EditText userName,passWord;
-        final Button login_btn;
-
-        userName = findViewById(R.id.userName);
-        passWord = findViewById(R.id.password);
-//        registration = findViewById(R.id.registration);
-        login_btn = findViewById(R.id.loginButton);
-        register_btn =findViewById(R.id.registerButton);
-
-//        registration.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent registration_page = new Intent(s_login.this,s_register.class);
-//                startActivity(registration_page);
-//            }
-//        });
+        db = new DataBaseHelper(this);
+        email = (EditText) findViewById(R.id.email);
+        password = (EditText) findViewById(R.id.password);
+        login_btn = (Button) findViewById(R.id.loginButton);
+        register_btn = (Button) findViewById(R.id.registerButton);
 
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,40 +37,25 @@ public class s_login extends AppCompatActivity {
             }
         });
 
-
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String mail = email.getText().toString().trim();
+                String pwd = password.getText().toString().trim();
+                Boolean res = db.checkUser(mail, pwd);
 
-
-
-                String s_user = userName.getText().toString();
-                String s_pass = passWord.getText().toString();
-
-//                String pass = helper.searchPass(s_user);
-//
-//                if ( s_pass.equals(pass) ){
-//
-//                    Intent intent = new Intent(login.this,home.class);
-//                    startActivity(intent);
-//                }
-//                else {
-//
-//                    Toast.makeText(login.this, "Username Password Incorrect", Toast.LENGTH_SHORT).show();
-//                }
-
-
-
-
+                if(res == true){
+                    Toast.makeText(s_login.this, "Successfully logged in as "+email, Toast.LENGTH_SHORT).show();
+                    Intent moveToHome=new Intent(s_login.this, s_homepage.class);
+                    startActivity(moveToHome);
+                }
+                else{
+                    Toast.makeText(s_login.this, "Login error", Toast.LENGTH_SHORT).show();
+                    Intent refresh = getIntent();
+                    startActivity(refresh);//Start the same Activity
+                    finish();
+                }
             }
         });
-
-
-
-
-
-
-
-
     }
 }

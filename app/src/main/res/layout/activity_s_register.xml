@@ -24,7 +24,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="154dp"
             android:layout_marginLeft="130dp"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="142dp"
             android:text="@string/register_page_title"
             android:textColor="@color/colorAccent"
@@ -43,10 +43,10 @@
 
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="13dp"
+            android:layout_marginStart="1dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="0dp"
+            android:layout_marginTop="51dp"
+            android:layout_marginEnd="12dp"
             android:hint="@string/register_page_fname_hint" />
 
         <EditText
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/firstName_Register"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="11dp"
+            android:layout_marginStart="1dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="22dp"
             android:hint="@string/register_page_lname_hint" />
@@ -66,31 +66,29 @@
             android:layout_height="50dp"
             android:layout_below="@+id/lastName_Register"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="0dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="22dp"
             android:hint="@string/register_page_address_hint" />
 
-        <EditText
-            android:id="@+id/telephone_Register"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/address_Register"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="18dp"
-            android:hint="@string/register_page_mobile_hint" />
+        <!--<EditText-->
+            <!--android:id="@+id/telephone_Register"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_marginStart="0dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:hint="@string/register_page_mobile_hint" />-->
 
         <EditText
             android:id="@+id/email_Register"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@+id/telephone_Register"
+            android:layout_below="@+id/address_Register"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="0dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="11dp"
             android:hint="@string/register_page_email_hint" />
 
         <EditText
@@ -99,9 +97,9 @@
             android:layout_height="50dp"
             android:layout_below="@+id/email_Register"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="0dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="17dp"
             android:hint="@string/register_page_password_hint" />
 
         <EditText
@@ -110,7 +108,7 @@
             android:layout_height="50dp"
             android:layout_below="@+id/password"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="1dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="17dp"
             android:hint="@string/register_page_confirmpassword_hint" />

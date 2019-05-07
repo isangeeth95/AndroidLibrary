@@ -14,12 +14,11 @@ tools:context=".s_login">
 
         <EditText
 
-            android:id="@+id/userName"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginLeft="10dp"
-            android:hint="@string/login_username_hint"
-
+            android:hint="Email"
             android:textColorLink="@color/design_default_color_primary" />
 
 
