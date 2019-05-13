@@ -22,17 +22,17 @@
             android:label="@string/title_activity_s_register"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".s_login" />
-        <activity android:name=".s_homepage" />
-        <activity android:name=".Inventory_main"/>
-        <activity android:name=".Inventory_add_book"/>
-        <activity android:name=".Inventory_view_book"/>
-        <activity android:name=".CATEGORIES">
+        <activity android:name=".s_homepage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Inventory_main"/>
+        <activity android:name=".Inventory_add_book"/>
+        <activity android:name=".Inventory_view_book"/>
+        <activity android:name=".CATEGORIES"/>
         <activity android:name=".second" />
         <activity android:name=".third" />
         <activity android:name=".fourth" />
