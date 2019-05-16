@@ -1,5 +1,6 @@
 package com.example.ashimi.androidlibrary;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,66 +15,59 @@ import android.widget.Toast;
 
 public class s_register extends AppCompatActivity {
 
+    DataBaseHelper db;
+    EditText fName_Register;
+    EditText lName_Register;
+    EditText address_Register;
+    EditText email_Register;
+    EditText password_Register;
+    EditText confirmPassword_Register;
+    Button register_Btn;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_register);
 
-
-
-        final EditText fName_Register,lName_Register,address_Register,tp_Register,email_Register,password_Register,confirmPassword_Register;
-        final Button register_Btn;
-//                final SQLiteDatabase sqLiteDatabase;
-
-
-        fName_Register = findViewById(R.id.firstName_Register);
-        lName_Register = findViewById(R.id.lastName_Register);
-        address_Register = findViewById(R.id.address_Register);
-        tp_Register = findViewById(R.id.telephone_Register);
-        email_Register = findViewById(R.id.email_Register);
-        password_Register = findViewById(R.id.password);
-        confirmPassword_Register = findViewById(R.id.confirmPassword_Register);
-        register_Btn  = findViewById(R.id.registerButton);
+        db = new DataBaseHelper(this);
+        fName_Register = (EditText) findViewById(R.id.firstName_Register);
+        lName_Register = (EditText) findViewById(R.id.lastName_Register);
+        address_Register = (EditText) findViewById(R.id.address_Register);
+        //tp_Register = findViewById(R.id.telephone_Register);
+        email_Register = (EditText) findViewById(R.id.email_Register);
+        password_Register = (EditText) findViewById(R.id.password);
+        confirmPassword_Register = (EditText) findViewById(R.id.confirmPassword_Register);
+        register_Btn  = (Button) findViewById(R.id.registerButton);
 
 
 
         register_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String f_name = fName_Register.getText().toString().trim();
+                String l_name = lName_Register.getText().toString().trim();
+                String address = address_Register.getText().toString().trim();
+                String email = email_Register.getText().toString().trim();
+                String password = password_Register.getText().toString().trim();
+                String conf_password = confirmPassword_Register.getText().toString().trim();
 
-                if (fName_Register.getText().toString().isEmpty()){
+                if(password.equals(conf_password)){
+                    long val = db.addUser(f_name, l_name, address, email, password);
 
-                    Toast.makeText(s_register.this, "Error", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                    if(val > 0){
+                        Toast.makeText(s_register.this, "Successfully registered as "+email+" .", Toast.LENGTH_SHORT).show();
 
-                    if (password_Register.getText().toString().equals(confirmPassword_Register.getText().toString())) {
-
-                        try {
-
-//                            Contact c = new Contact();
-//                            c.setUsername(fName_Register.getText().toString());
-//                            c.setlName(lName_Register.getText().toString());
-//                            c.setAddress(address_Register.getText().toString());
-//                            c.setTp(tp_Register.getText().toString());
-//                            c.setEmail(email_Register.getText().toString());
-//                            c.setPssword(password_Register.getText().toString());
-//
-//                            helper.insertContact(c);
-
-
-                            Toast.makeText(s_register.this, "Registration Succesfull", Toast.LENGTH_LONG).show();
-
-
-                        } catch (Exception e) {
-                            Log.e("ERROR",e.getLocalizedMessage());
-                            Toast.makeText(s_register.this, "error" + e, Toast.LENGTH_LONG).show();
-                        }
-
-                    } else {
-
-                        Toast.makeText(s_register.this, "Password doesn't match", Toast.LENGTH_SHORT).show();
+                        Intent moveToLogin = new Intent(s_register.this, s_login.class);
+                        startActivity(moveToLogin);
                     }
+                    else{
+                        Toast.makeText(s_register.this, "Registration failed"+email+" .", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(s_register.this, "Password is not matching"+email+" .", Toast.LENGTH_SHORT).show();
                 }
             }
         });

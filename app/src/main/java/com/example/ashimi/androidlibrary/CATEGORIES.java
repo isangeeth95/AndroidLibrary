@@ -28,8 +28,6 @@ Toast.makeText( CATEGORIES.this, "FireBase connection Success", Toast.LENGTH_LON
         Button button7 = findViewById(R.id.button7);
         Button button8 = findViewById(R.id.button8);
         Button button9 = findViewById(R.id.button9);
-        Button button10 = findViewById(R.id.home);
-
 
         button.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -40,7 +38,6 @@ Toast.makeText( CATEGORIES.this, "FireBase connection Success", Toast.LENGTH_LON
         button7.setOnClickListener(this);
         button8.setOnClickListener(this);
         button9.setOnClickListener(this);
-        button10.setOnClickListener(this);
 
 
         button8.setOnClickListener(new View.OnClickListener() {
@@ -75,13 +72,6 @@ Toast.makeText( CATEGORIES.this, "FireBase connection Success", Toast.LENGTH_LON
             }
         });
 
-        button10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent int5 = new Intent(CATEGORIES.this,s_homepage.class);
-                startActivity(int5);
-            }
-        });
     }
 
     @Override
