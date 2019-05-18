@@ -10,6 +10,8 @@ public class Inventory_main extends AppCompatActivity {
 
     LinearLayout view_book;
     LinearLayout add_book;
+    LinearLayout manage_book;
+    LinearLayout search_book;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,8 @@ public class Inventory_main extends AppCompatActivity {
 
         view_book = (LinearLayout) findViewById(R.id.view_book);
         add_book = (LinearLayout) findViewById(R.id.add_book);
+        manage_book = (LinearLayout) findViewById( R.id.manage_book );
+        search_book = (LinearLayout) findViewById( R.id.search_book );
 
         view_book.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +37,20 @@ public class Inventory_main extends AppCompatActivity {
 
                 Intent intent_add_book=new Intent(Inventory_main.this, Inventory_add_book.class);
                 startActivity(intent_add_book);
+            }
+        });
+        manage_book.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent_manage_book=new Intent( Inventory_main.this, Inventory_manage_book.class );
+                startActivity(intent_manage_book);
+            }
+        });
+        search_book.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent_search_book=new Intent( Inventory_main.this, Inventory_search_book.class );
+                startActivity(intent_search_book);
             }
         });
     }
