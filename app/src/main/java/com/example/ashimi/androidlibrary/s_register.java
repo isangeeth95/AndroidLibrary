@@ -53,7 +53,7 @@ public class s_register extends AppCompatActivity {
                 if(validate()){
                     //update the database
 
-                    String user_email = email_Register.getText().toString().trim();
+                    final String user_email = email_Register.getText().toString().trim();
                     String user_password = password_Register.getText().toString().trim();
 
                     progressDialog.setMessage("Registering");
@@ -68,7 +68,7 @@ public class s_register extends AppCompatActivity {
                                 saveUserInformation();
                             } else {
                                 progressDialog.dismiss();
-                                Toast.makeText(s_register.this, "Registration Failed, Always required strong password", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(s_register.this, "Registration Failed, Always required strong password and unique email", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -130,11 +130,13 @@ public class s_register extends AppCompatActivity {
     private void saveUserInformation(){
         String user_name = name_Register.getText().toString().trim();
         String user_mobile = tp_Register.getText().toString().trim();
+        String user_email = email_Register.getText().toString().trim();
 
         FirebaseUser user=firebaseAuth.getCurrentUser();
         mData = FirebaseDatabase.getInstance().getReference();
 
         if(user != null){
+            mData.child("users").child(user.getUid()).child("user_email").setValue(user_email);
             mData.child("users").child(user.getUid()).child("user_name").setValue(user_name);
             mData.child("users").child(user.getUid()).child("mobile_number").setValue(user_mobile);
         }
