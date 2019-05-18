@@ -30,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Inventory_main"/>
+        <activity android:name=".Inventory_test"/>
         <activity android:name=".Inventory_add_book"/>
         <activity android:name=".Inventory_view_book"/>
         <activity android:name=".Inventory_manage_book"/>

@@ -50,4 +50,11 @@
     <string name="publishDate">Publish Date: </string>
     <string name="language">Language: </string>
 
+    <array name="category">
+        <item>IT</item>
+        <item>BM</item>
+        <item>EN</item>
+        <item>MED</item>
+    </array>
+
 </resources>

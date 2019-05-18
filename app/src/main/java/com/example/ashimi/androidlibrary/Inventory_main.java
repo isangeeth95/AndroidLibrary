@@ -49,7 +49,7 @@ public class Inventory_main extends AppCompatActivity {
         search_book.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent_search_book=new Intent( Inventory_main.this, Inventory_search_book.class );
+                Intent intent_search_book=new Intent( Inventory_main.this, Inventory_test.class );
                 startActivity(intent_search_book);
             }
         });

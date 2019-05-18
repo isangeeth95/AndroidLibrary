@@ -36,7 +36,7 @@ public class fourth extends AppCompatActivity {
         list = new ArrayList<EBook>();
 
         isbn = (TextView)findViewById(R.id.isbn);
-        eBookTitle = (TextView)findViewById( R.id.title );
+        eBookTitle = (TextView)findViewById( R.id.name );
         category = (TextView)findViewById( R.id.category );
         author= (TextView)findViewById( R.id.author);
         edition= (TextView)findViewById(R.id.edition);
