@@ -2,19 +2,22 @@ package com.example.ashimi.androidlibrary;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
 
 import com.google.firebase.auth.FirebaseAuth;
+
 
 public class s_register extends AppCompatActivity {
 
@@ -30,7 +33,10 @@ public class s_register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
+
         setContentView(R.layout.activity_s_register);
+
         setupUIViews();
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -44,6 +50,22 @@ public class s_register extends AppCompatActivity {
                     String user_password = password_Register.getText().toString().trim();
                     String user_name = name_Register.getText().toString().trim();
                     String user_mobile = tp_Register.getText().toString().trim();
+
+                    firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+//                                Log.d(TAG, "createUserWithEmail:success");
+                                Toast.makeText(s_register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(s_register.this, s_login.class));
+                            } else {
+                                // If sign in fails, display a message to the user.
+//                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                Toast.makeText(s_register.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
             }
         });
@@ -74,7 +96,7 @@ public class s_register extends AppCompatActivity {
         String email = email_Register.getText().toString();
         String mobile = tp_Register.getText().toString();
 
-        if(name.isEmpty() || password.isEmpty() || confirm_pwd.isEmpty() || email.isEmpty() || email.isEmpty()){
+        if(name.isEmpty() || password.isEmpty() || confirm_pwd.isEmpty() || email.isEmpty() || mobile.isEmpty()){
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }
 

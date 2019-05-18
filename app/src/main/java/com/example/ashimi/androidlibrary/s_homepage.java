@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.google.firebase.FirebaseApp;
+
 public class s_homepage extends AppCompatActivity {
 
     LinearLayout category_view;
@@ -18,6 +20,7 @@ public class s_homepage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_s_homepage);
 
         category_view = (LinearLayout) findViewById(R.id.see_category);
