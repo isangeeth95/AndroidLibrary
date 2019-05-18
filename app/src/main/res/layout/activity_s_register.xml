@@ -1,138 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
-    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_height="match_parent"
+    android:background="@color/background_register"
     >
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="318dp"
+        android:layout_height="128dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="61dp"
+        app:srcCompat="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/Name_Register"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="72dp"
+        android:background="@color/background_register"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:textAlignment="center"
+        android:textSize="25dp" />
 
-        <TextView
-            android:id="@+id/registerHere"
-            android:layout_width="115dp"
-            android:layout_height="39dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="154dp"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="142dp"
-            android:text="@string/register_page_title"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="84dp" />
+    <EditText
+        android:id="@+id/email_Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Name_Register"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/background_register"
+        android:inputType="textPersonName"
+        android:text="Email"
+        android:drawableLeft="@drawable/ic_mail_black_24dp"
+        android:textAlignment="center"
+        android:textSize="25dp" />
 
+    <EditText
+        android:id="@+id/telephone_Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email_Register"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/background_register"
+        android:inputType="textPersonName"
+        android:text="Mobile Number"
+        android:drawableLeft="@drawable/ic_contact_phone_black_24dp"
+        android:textAlignment="center"
+        android:textSize="25dp" />
 
-        <EditText
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/telephone_Register"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/background_register"
+        android:inputType="textPersonName"
+        android:text="Password"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:textAlignment="center"
+        android:textSize="25dp" />
 
-            android:id="@+id/firstName_Register"
-            android:layout_width="398dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/registerHere"
+    <EditText
+        android:id="@+id/confirmPassword_Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/background_register"
+        android:inputType="textPersonName"
+        android:text="Retype Password"
+        android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+        android:textAlignment="center"
+        android:textSize="25dp" />
 
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="1dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="51dp"
-            android:layout_marginEnd="12dp"
-            android:hint="@string/register_page_fname_hint" />
+    <android.support.v7.widget.CardView
+        android:layout_width="500dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/confirmPassword_Register"
+        android:layout_marginTop="48dp"
+        android:layout_centerHorizontal="true"
+        app:cardCornerRadius="25dp"
+        app:cardBackgroundColor="@color/colorAccent" >
 
-        <EditText
-            android:id="@+id/lastName_Register"
-            android:layout_width="401dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/firstName_Register"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="1dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="22dp"
-            android:hint="@string/register_page_lname_hint" />
-
-        <EditText
-            android:id="@+id/address_Register"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/lastName_Register"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="22dp"
-            android:hint="@string/register_page_address_hint" />
+            android:layout_height="match_parent">
 
-        <!--<EditText-->
-            <!--android:id="@+id/telephone_Register"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_alignParentStart="true"-->
-            <!--android:layout_marginStart="0dp"-->
-            <!--android:layout_marginLeft="10dp"-->
-            <!--android:hint="@string/register_page_mobile_hint" />-->
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:layout_centerInParent="true"
+                android:textColor="#fff"
+                android:textSize="25dp"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
-        <EditText
-            android:id="@+id/email_Register"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/address_Register"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="11dp"
-            android:hint="@string/register_page_email_hint" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/email_Register"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="17dp"
-            android:hint="@string/register_page_password_hint" />
-
-        <EditText
-            android:id="@+id/confirmPassword_Register"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/password"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="1dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="17dp"
-            android:hint="@string/register_page_confirmpassword_hint" />
-
-        <Button
-
-            android:id="@+id/registerButton"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:layout_below="@+id/confirmPassword_Register"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="125dp"
-            android:layout_marginLeft="125dp"
-            android:layout_marginTop="31dp"
-            android:layout_marginEnd="136dp"
-            android:layout_marginBottom="1dp"
-            android:text="@string/register_page_register_button"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
-
-
-
-</ScrollView>
+</RelativeLayout>
