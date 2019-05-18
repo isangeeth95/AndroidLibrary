@@ -135,6 +135,7 @@ public class s_register extends AppCompatActivity {
         String user_name = name_Register.getText().toString().trim();
         String user_mobile = tp_Register.getText().toString().trim();
         String user_email = email_Register.getText().toString().trim();
+        String status = "enabled";
 
         FirebaseUser user=firebaseAuth.getCurrentUser();
         mData = FirebaseDatabase.getInstance().getReference();
@@ -143,6 +144,7 @@ public class s_register extends AppCompatActivity {
             mData.child("users").child(user.getUid()).child("user_email").setValue(user_email);
             mData.child("users").child(user.getUid()).child("user_name").setValue(user_name);
             mData.child("users").child(user.getUid()).child("mobile_number").setValue(user_mobile);
+            mData.child("users").child(user.getUid()).child("status").setValue(status);
         }
     }
 

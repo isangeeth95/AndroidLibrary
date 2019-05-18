@@ -1,14 +1,19 @@
 package com.example.ashimi.androidlibrary;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +33,7 @@ public class s_profile extends AppCompatActivity {
     CardView get_profileForm;
     DatabaseReference mData;
     ProgressDialog progressDialog;
+    ImageView image, deleteUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +79,42 @@ public class s_profile extends AppCompatActivity {
                 }
             }
         });
+
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(s_profile.this, s_homepage.class));
+            }
+        });
+
+        deleteUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(s_profile.this);
+                alert.setMessage("Do you really want to remove your account and leave us ?").setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                                mData.child(user.getUid()).child("status").setValue("disabled");
+                                user.delete();
+                                Toast.makeText(s_profile.this, "User successfully removed from the database", Toast.LENGTH_SHORT).show();
+                                finish();
+                                startActivity(new Intent(s_profile.this, s_login.class));
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alertDialog = alert.create();
+                alertDialog.setTitle("Think thousand times");
+                alertDialog.show();
+            }
+        });
     }
 
     private void setupUIViews(){
@@ -82,6 +124,8 @@ public class s_profile extends AppCompatActivity {
         dbMobile = (TextView)findViewById(R.id.dbMobile);
         get_profileForm = (CardView)findViewById(R.id.card_getProfileForm);
         progressDialog = new ProgressDialog(this);
+        image = (ImageView)findViewById(R.id.imageView2);
+        deleteUser = (ImageView)findViewById(R.id.deleteUserImage);
     }
 
     private Boolean validate(String user, String mobile){
