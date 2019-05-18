@@ -1,77 +1,101 @@
 package com.example.ashimi.androidlibrary;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class s_register extends AppCompatActivity {
 
     EditText name_Register;
-    EditText address_Register;
     EditText email_Register;
     EditText tp_Register;
     EditText password_Register;
     EditText confirmPassword_Register;
-    Button register_Btn;
-
-
+    CardView register_Btn;
+    TextView userLogin;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_register);
+        setupUIViews();
 
-        name_Register = (EditText) findViewById(R.id.Name_Register);
-        tp_Register = findViewById(R.id.telephone_Register);
-        email_Register = (EditText) findViewById(R.id.email_Register);
-        password_Register = (EditText) findViewById(R.id.password);
-        confirmPassword_Register = (EditText) findViewById(R.id.confirmPassword_Register);
-        register_Btn  = (Button) findViewById(R.id.registerButton);
-
-
+        firebaseAuth = FirebaseAuth.getInstance();
 
         register_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String f_name = name_Register.getText().toString().trim();
-                String address = address_Register.getText().toString().trim();
-                String email = email_Register.getText().toString().trim();
-                String password = password_Register.getText().toString().trim();
-                String conf_password = confirmPassword_Register.getText().toString().trim();
-
-//                if(password.equals(conf_password)){
-//
-//                    if(){
-//                        Toast.makeText(s_register.this, "Successfully registered as "+email+" .", Toast.LENGTH_SHORT).show();
-//
-//                        Intent moveToLogin = new Intent(s_register.this, s_login.class);
-//                        startActivity(moveToLogin);
-//                    }
-//                    else{
-//                        Toast.makeText(s_register.this, "Registration failed"+email+" .", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                else{
-//                    Toast.makeText(s_register.this, "Password is not matching"+email+" .", Toast.LENGTH_SHORT).show();
-//                }
+                if(validate()){
+                    //update the database
+                    String user_email = email_Register.getText().toString().trim();
+                    String user_password = password_Register.getText().toString().trim();
+                    String user_name = name_Register.getText().toString().trim();
+                    String user_mobile = tp_Register.getText().toString().trim();
+                }
             }
         });
 
-
-
-
+        userLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(s_register.this, s_login.class));
+            }
+        });
     }
 
+    private void setupUIViews() {
+        name_Register = (EditText) findViewById(R.id.Name_Register);
+        tp_Register = (EditText) findViewById(R.id.telephone_Register);
+        email_Register = (EditText) findViewById(R.id.email_Register);
+        password_Register = (EditText) findViewById(R.id.password);
+        confirmPassword_Register = (EditText) findViewById(R.id.confirmPassword_Register);
+        register_Btn = (CardView) findViewById(R.id.card_register);
+    }
 
+    private Boolean validate(){
+        Boolean result = false;
+
+        String name = name_Register.getText().toString();
+        String password = password_Register.getText().toString();
+        String confirm_pwd = confirmPassword_Register.getText().toString();
+        String email = email_Register.getText().toString();
+        String mobile = tp_Register.getText().toString();
+
+        if(name.isEmpty() || password.isEmpty() || confirm_pwd.isEmpty() || email.isEmpty() || email.isEmpty()){
+            Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
+        }
+
+        else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
+        }
+
+        else if(!android.util.Patterns.PHONE.matcher(mobile).matches()){
+            Toast.makeText(this, "Please enter a valid mobile number", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (!password.equals(confirm_pwd)){
+            Toast.makeText(this, "Passwords don't match", Toast.LENGTH_SHORT).show();
+        }
+
+        else{
+            result = true;
+        }
+
+        return result;
+    }
 
 }
 

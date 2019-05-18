@@ -38,7 +38,7 @@
         android:layout_marginTop="72dp"
         android:background="@color/background_register"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="Name"
         android:drawableLeft="@drawable/ic_person_black_24dp"
         android:textAlignment="center"
         android:textSize="25dp" />
@@ -56,7 +56,7 @@
         android:layout_marginTop="25dp"
         android:background="@color/background_register"
         android:inputType="textPersonName"
-        android:text="Email"
+        android:hint="Email"
         android:drawableLeft="@drawable/ic_mail_black_24dp"
         android:textAlignment="center"
         android:textSize="25dp" />
@@ -74,7 +74,7 @@
         android:layout_marginEnd="30dp"
         android:background="@color/background_register"
         android:inputType="textPersonName"
-        android:text="Mobile Number"
+        android:hint="Mobile Number"
         android:drawableLeft="@drawable/ic_contact_phone_black_24dp"
         android:textAlignment="center"
         android:textSize="25dp" />
@@ -92,7 +92,7 @@
         android:layout_marginEnd="30dp"
         android:background="@color/background_register"
         android:inputType="textPersonName"
-        android:text="Password"
+        android:hint="Password"
         android:drawableLeft="@drawable/ic_lock_black_24dp"
         android:textAlignment="center"
         android:textSize="25dp" />
@@ -110,12 +110,13 @@
         android:layout_marginEnd="30dp"
         android:background="@color/background_register"
         android:inputType="textPersonName"
-        android:text="Retype Password"
+        android:hint="Retype Password"
         android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
         android:textAlignment="center"
         android:textSize="25dp" />
 
     <android.support.v7.widget.CardView
+        android:id="@+id/card_register"
         android:layout_width="500dp"
         android:layout_height="50dp"
         android:layout_below="@+id/confirmPassword_Register"
@@ -138,5 +139,18 @@
                 android:textSize="25dp"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/text_alreadyLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_register"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/background_register"
+        android:text="Already signed up ? Login"
+        android:textSize="25dp"
+        android:textColor="#fff"/>
 
 </RelativeLayout>
