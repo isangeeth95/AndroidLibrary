@@ -41,7 +41,9 @@ public class s_login extends AppCompatActivity {
         login_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validate(email.getText().toString(), password.getText().toString());
+                if(validate(email.getText().toString(), password.getText().toString())){
+                    login(email.getText().toString(), password.getText().toString());
+                }
             }
         });
 
@@ -61,7 +63,7 @@ public class s_login extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
     }
 
-    private void validate(String user_email, String user_password){
+    private void login(String user_email, String user_password){
 
         progressDialog.setMessage("Login");
         progressDialog.show();
@@ -78,6 +80,23 @@ public class s_login extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private Boolean validate(String email, String password){
+        Boolean result = false;
+        if(email.isEmpty() || password.isEmpty()){
+            Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
+        }
+
+        else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
+        }
+
+        else{
+            result = true;
+        }
+
+        return result;
     }
 
 }
