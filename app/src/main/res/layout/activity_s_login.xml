@@ -12,7 +12,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:layout_height="match_parent"
-        android:minHeight="800dp"
+        android:minHeight="730dp"
         android:background="@color/background_register"
         >
 
