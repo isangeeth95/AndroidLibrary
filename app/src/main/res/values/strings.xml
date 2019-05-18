@@ -23,12 +23,10 @@
     <string name="title_activity_s_register">s_register</string>
 
 
-
     <string name="login_button_label">Login</string>
     <string name="registration_popup">New here! Register</string>
     <string name="login_password_hint">Password</string>
     <string name="login_username_hint">User name</string>
-
 
 
     <string name="register_page_title">REGISTER</string>

@@ -12,7 +12,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -104,6 +105,9 @@ public class s_register extends AppCompatActivity {
         String email = email_Register.getText().toString();
         String mobile = tp_Register.getText().toString();
 
+        Pattern pattern = Pattern.compile("^+[0]\\d{2}\\d{7}");
+        Matcher matcher = pattern.matcher(mobile);
+
         if(name.isEmpty() || password.isEmpty() || confirm_pwd.isEmpty() || email.isEmpty() || mobile.isEmpty()){
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }
@@ -112,7 +116,7 @@ public class s_register extends AppCompatActivity {
             Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
         }
 
-        else if(!android.util.Patterns.PHONE.matcher(mobile).matches()){
+        else if(!matcher.matches()){
             Toast.makeText(this, "Please enter a valid mobile number", Toast.LENGTH_SHORT).show();
         }
 
@@ -131,6 +135,7 @@ public class s_register extends AppCompatActivity {
         String user_name = name_Register.getText().toString().trim();
         String user_mobile = tp_Register.getText().toString().trim();
         String user_email = email_Register.getText().toString().trim();
+        String status = "enabled";
 
         FirebaseUser user=firebaseAuth.getCurrentUser();
         mData = FirebaseDatabase.getInstance().getReference();
@@ -139,6 +144,7 @@ public class s_register extends AppCompatActivity {
             mData.child("users").child(user.getUid()).child("user_email").setValue(user_email);
             mData.child("users").child(user.getUid()).child("user_name").setValue(user_name);
             mData.child("users").child(user.getUid()).child("mobile_number").setValue(user_mobile);
+            mData.child("users").child(user.getUid()).child("status").setValue(status);
         }
     }
 

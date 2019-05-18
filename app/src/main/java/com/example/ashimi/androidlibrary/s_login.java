@@ -75,7 +75,7 @@ public class s_login extends AppCompatActivity {
                     startActivity(new Intent(s_login.this, s_homepage.class));
                 } else {
                     progressDialog.dismiss();
-                    Toast.makeText(s_login.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(s_login.this, "Login Failed, Check credentials again", Toast.LENGTH_SHORT).show();
                 }
             }
         });
