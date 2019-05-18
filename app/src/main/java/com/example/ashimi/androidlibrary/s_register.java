@@ -31,7 +31,6 @@ public class s_register extends AppCompatActivity {
     CardView register_Btn;
     TextView userLogin;
     FirebaseAuth firebaseAuth;
-    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,6 @@ public class s_register extends AppCompatActivity {
         setContentView(R.layout.activity_s_register);
 
         setupUIViews();
-
         firebaseAuth = FirebaseAuth.getInstance();
 
         register_Btn.setOnClickListener(new View.OnClickListener() {
@@ -48,8 +46,6 @@ public class s_register extends AppCompatActivity {
             public void onClick(View v) {
                 if(validate()){
                     //update the database
-                    progressDialog.setMessage("User Registering in process");
-                    progressDialog.show();
 
                     String user_email = email_Register.getText().toString().trim();
                     String user_password = password_Register.getText().toString().trim();
@@ -59,7 +55,6 @@ public class s_register extends AppCompatActivity {
                     firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressDialog.dismiss();
                             if (task.isSuccessful()) {
                                 Toast.makeText(s_register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(s_register.this, s_login.class));
