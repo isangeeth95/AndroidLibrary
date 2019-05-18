@@ -1,5 +1,6 @@
 package com.example.ashimi.androidlibrary;
 
+import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class s_profile extends AppCompatActivity {
 
@@ -23,6 +27,7 @@ public class s_profile extends AppCompatActivity {
     TextView dbName, dbEmail, dbMobile;
     CardView get_profileForm;
     DatabaseReference mData;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +68,8 @@ public class s_profile extends AppCompatActivity {
                 if(validate(user_name, mobile_number)){
                     mData.child(user.getUid()).child("user_name").setValue(user_name);
                     mData.child(user.getUid()).child("mobile_number").setValue(mobile_number);
+                    progressDialog.dismiss();
+                    Toast.makeText(s_profile.this, "Successfully updated the profile", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -74,20 +81,31 @@ public class s_profile extends AppCompatActivity {
         dbEmail = (TextView) findViewById(R.id.dbEmail);
         dbMobile = (TextView)findViewById(R.id.dbMobile);
         get_profileForm = (CardView)findViewById(R.id.card_getProfileForm);
+        progressDialog = new ProgressDialog(this);
     }
 
     private Boolean validate(String user, String mobile){
+        progressDialog.setMessage("Validating");
+        progressDialog.show();
         Boolean result = false;
 
+        Pattern pattern = Pattern.compile("^+[0]\\d{2}\\d{7}");
+        Matcher matcher = pattern.matcher(mobile);
+
         if(user == null || mobile == null){
+            progressDialog.dismiss();
             Toast.makeText(s_profile.this, "Dont keep blank lines", Toast.LENGTH_SHORT).show();
         }
 
-        else if(!android.util.Patterns.PHONE.matcher(mobile).matches()){
+        else if(!matcher.matches()){
+            progressDialog.dismiss();
             Toast.makeText(s_profile.this, "Enter a valid mobile number", Toast.LENGTH_SHORT).show();
         }
 
         else{
+            progressDialog.dismiss();
+            progressDialog.setMessage("Updating database");
+            progressDialog.show();
             result = true;
         }
         return result;
