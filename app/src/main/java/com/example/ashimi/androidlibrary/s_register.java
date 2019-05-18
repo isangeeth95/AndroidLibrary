@@ -19,6 +19,10 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class s_register extends AppCompatActivity {
@@ -32,6 +36,7 @@ public class s_register extends AppCompatActivity {
     TextView userLogin;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
+    DatabaseReference mData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +55,6 @@ public class s_register extends AppCompatActivity {
 
                     String user_email = email_Register.getText().toString().trim();
                     String user_password = password_Register.getText().toString().trim();
-                    String user_name = name_Register.getText().toString().trim();
-                    String user_mobile = tp_Register.getText().toString().trim();
-
 
                     progressDialog.setMessage("Registering");
                     progressDialog.show();
@@ -63,6 +65,7 @@ public class s_register extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(s_register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(s_register.this, s_login.class));
+                                saveUserInformation();
                             } else {
                                 progressDialog.dismiss();
                                 Toast.makeText(s_register.this, "Registration Failed, Always required strong password", Toast.LENGTH_SHORT).show();
@@ -122,6 +125,19 @@ public class s_register extends AppCompatActivity {
         }
 
         return result;
+    }
+
+    private void saveUserInformation(){
+        String user_name = name_Register.getText().toString().trim();
+        String user_mobile = tp_Register.getText().toString().trim();
+
+        FirebaseUser user=firebaseAuth.getCurrentUser();
+        mData = FirebaseDatabase.getInstance().getReference();
+
+        if(user != null){
+            mData.child("users").child(user.getUid()).child("user_name").setValue(user_name);
+            mData.child("users").child(user.getUid()).child("mobile_number").setValue(user_mobile);
+        }
     }
 
 }
