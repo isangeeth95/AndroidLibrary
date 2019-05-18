@@ -15,6 +15,7 @@
     android:background="#fcfcfc"
     android:gravity="center"
     android:id="@+id/ll">
+
     <LinearLayout
         android:clipToPadding="false"
         android:gravity="center"
