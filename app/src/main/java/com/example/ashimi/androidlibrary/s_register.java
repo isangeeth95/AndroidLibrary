@@ -1,5 +1,6 @@
 package com.example.ashimi.androidlibrary;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +9,7 @@ import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ public class s_register extends AppCompatActivity {
     CardView register_Btn;
     TextView userLogin;
     FirebaseAuth firebaseAuth;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,9 @@ public class s_register extends AppCompatActivity {
             public void onClick(View v) {
                 if(validate()){
                     //update the database
+                    progressDialog.setMessage("User Registering in process");
+                    progressDialog.show();
+
                     String user_email = email_Register.getText().toString().trim();
                     String user_password = password_Register.getText().toString().trim();
                     String user_name = name_Register.getText().toString().trim();
@@ -53,6 +59,7 @@ public class s_register extends AppCompatActivity {
                     firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressDialog.dismiss();
                             if (task.isSuccessful()) {
                                 Toast.makeText(s_register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(s_register.this, s_login.class));
