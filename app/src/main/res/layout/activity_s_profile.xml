@@ -47,7 +47,7 @@
         android:layout_below="@+id/name"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        app:cardCornerRadius="25dp"
+        app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/green" >
 
         <RelativeLayout
@@ -84,7 +84,7 @@
         android:layout_below="@+id/email"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        app:cardCornerRadius="25dp"
+        app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/green" >
 
         <RelativeLayout
@@ -121,7 +121,7 @@
         android:layout_below="@+id/Mobile"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        app:cardCornerRadius="25dp"
+        app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/green" >
 
         <RelativeLayout
@@ -142,7 +142,7 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_getProfileForm"
-        android:layout_width="500dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_below="@+id/card_dbMobile"
         android:layout_marginTop="48dp"
@@ -170,7 +170,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/card_getProfileForm"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="65dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="60dp"
         android:text="You can only update the name and mobile "
@@ -184,7 +184,7 @@
         android:layout_height="58dp"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="155dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="29dp"
         android:layout_marginBottom="61dp"
