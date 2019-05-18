@@ -16,6 +16,7 @@ public class s_homepage extends AppCompatActivity {
     LinearLayout category_view;
     LinearLayout login_view;
     LinearLayout inventory_view;
+    LinearLayout location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class s_homepage extends AppCompatActivity {
         category_view = (LinearLayout) findViewById(R.id.see_category);
         login_view = (LinearLayout) findViewById(R.id.membership);
         inventory_view = (LinearLayout) findViewById(R.id.inventory);
+        location = (LinearLayout)findViewById(R.id.profile_form);
 
         category_view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +54,12 @@ public class s_homepage extends AppCompatActivity {
             }
         });
 
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(s_homepage.this, s_profile.class));
+            }
+        });
 
     }
 
