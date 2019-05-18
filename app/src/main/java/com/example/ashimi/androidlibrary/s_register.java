@@ -34,7 +34,6 @@ public class s_register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
-
         setContentView(R.layout.activity_s_register);
 
         setupUIViews();
@@ -55,13 +54,9 @@ public class s_register extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-//                                Log.d(TAG, "createUserWithEmail:success");
                                 Toast.makeText(s_register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(s_register.this, s_login.class));
                             } else {
-                                // If sign in fails, display a message to the user.
-//                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
                                 Toast.makeText(s_register.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -85,6 +80,7 @@ public class s_register extends AppCompatActivity {
         password_Register = (EditText) findViewById(R.id.password);
         confirmPassword_Register = (EditText) findViewById(R.id.confirmPassword_Register);
         register_Btn = (CardView) findViewById(R.id.card_register);
+        userLogin = (TextView)findViewById(R.id.text_alreadyLogin);
     }
 
     private Boolean validate(){

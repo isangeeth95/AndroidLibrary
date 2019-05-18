@@ -29,12 +29,12 @@ public class s_login extends AppCompatActivity {
         setContentView(R.layout.activity_s_login);
         setupUIViews();
 
-        login_Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        login_Btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
