@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/dbName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/dbMobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -160,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Change Profile Info"
+                android:text="Update Profile Info"
                 android:textColor="#fff"
                 android:textSize="25dp" />
         </RelativeLayout>
@@ -177,7 +177,7 @@
         android:textColor="#ba160c"
         android:textSize="17dp"
         android:textAlignment="center"
-        android:text="Click here to get profile form" />
+        android:text="You can only update the name and mobile " />
 
 
 
