@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#93dff9"
+    android:background="@drawable/library"
     tools:context=".EditEBook">
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="ISBN"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.072" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/isbn"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -35,6 +35,7 @@
         android:ems="10"
         android:inputType="text"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -49,7 +50,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="EBook Title"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +60,7 @@
         app:layout_constraintVertical_bias="0.162" />
 
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/ebooktitle"
         android:layout_width="169dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -69,6 +70,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -87,7 +89,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="BOOK CATEGORY"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +99,7 @@
         app:layout_constraintVertical_bias="0.262" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/category"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -107,6 +109,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -123,7 +126,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="AUTHOR"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +136,7 @@
         app:layout_constraintVertical_bias="0.362" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/author"
         android:layout_width="172dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -143,6 +146,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -159,7 +163,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="EDITION"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -169,7 +173,7 @@
         app:layout_constraintVertical_bias="0.456" />
 
     <EditText
-        android:id="@+id/editText13"
+        android:id="@+id/edition"
         android:layout_width="172dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -179,6 +183,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -195,7 +200,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="PUBLISH DATE"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -205,7 +210,7 @@
         app:layout_constraintVertical_bias="0.556" />
 
     <EditText
-        android:id="@+id/editText14"
+        android:id="@+id/publish"
         android:layout_width="172dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -215,6 +220,7 @@
         android:ems="10"
         android:inputType="date"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -231,7 +237,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="LANGUAGE"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -241,7 +247,7 @@
         app:layout_constraintVertical_bias="0.658" />
 
     <EditText
-        android:id="@+id/editText15"
+        android:id="@+id/language"
         android:layout_width="172dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -251,6 +257,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.959"
@@ -267,7 +274,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="PICTURE"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -277,7 +284,7 @@
         app:layout_constraintVertical_bias="0.763" />
 
     <EditText
-        android:id="@+id/editText16"
+        android:id="@+id/picture"
         android:layout_width="172dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -287,6 +294,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.959"

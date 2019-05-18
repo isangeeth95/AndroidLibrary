@@ -41,5 +41,13 @@
     <string name="register_page_confirmpassword_hint">Retype password</string>
     <string name="register_page_register_button">Register</string>
 
+    <!-- Strings related to ebook -->
+    <string name="isbn">ISBN: </string>
+    <string name="eBookTitle">Title: </string>
+    <string name="category">Category: </string>
+    <string name="author">Author: </string>
+    <string name="edition">Edition: </string>
+    <string name="publishDate">Publish Date: </string>
+    <string name="language">Language: </string>
 
 </resources>

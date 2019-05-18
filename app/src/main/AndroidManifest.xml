@@ -32,6 +32,8 @@
         <activity android:name=".Inventory_main"/>
         <activity android:name=".Inventory_add_book"/>
         <activity android:name=".Inventory_view_book"/>
+        <activity android:name=".Inventory_manage_book"/>
+        <activity android:name=".Inventory_search_book"/>
         <activity android:name=".CATEGORIES"/>
         <activity android:name=".second" />
         <activity android:name=".third" />
