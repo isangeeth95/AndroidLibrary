@@ -31,6 +31,7 @@ public class s_register extends AppCompatActivity {
     CardView register_Btn;
     TextView userLogin;
     FirebaseAuth firebaseAuth;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +53,19 @@ public class s_register extends AppCompatActivity {
                     String user_name = name_Register.getText().toString().trim();
                     String user_mobile = tp_Register.getText().toString().trim();
 
+
+                    progressDialog.setMessage("Registering");
+                    progressDialog.show();
                     firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                progressDialog.dismiss();
                                 Toast.makeText(s_register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(s_register.this, s_login.class));
                             } else {
-                                Toast.makeText(s_register.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                                progressDialog.dismiss();
+                                Toast.makeText(s_register.this, "Registration Failed, Always required strong password", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -83,6 +89,7 @@ public class s_register extends AppCompatActivity {
         confirmPassword_Register = (EditText) findViewById(R.id.confirmPassword_Register);
         register_Btn = (CardView) findViewById(R.id.card_register);
         userLogin = (TextView)findViewById(R.id.text_alreadyLogin);
+        progressDialog = new ProgressDialog(this);
     }
 
     private Boolean validate(){
