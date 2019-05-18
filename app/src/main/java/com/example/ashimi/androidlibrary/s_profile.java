@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,14 +40,15 @@ public class s_profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_profile);
+        FirebaseApp.initializeApp(this);
 
         setupUIViews();
-
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
         mData = FirebaseDatabase.getInstance().getReference().child("users");
         mData.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+//                FirebaseUser user = firebaseAuth.getCurrentUser();
                 dbName.setText((String)dataSnapshot.child(user.getUid()).child("user_name").getValue());
                 dbEmail.setText((String)dataSnapshot.child(user.getUid()).child("user_email").getValue());
                 dbMobile.setText((String)dataSnapshot.child(user.getUid()).child("mobile_number").getValue());
@@ -62,8 +64,6 @@ public class s_profile extends AppCompatActivity {
         get_profileForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                FirebaseUser user = firebaseAuth.getCurrentUser();
 
                 System.out.println(dbName.getText().toString().trim());
                 System.out.println(dbMobile.getText().toString().trim());
@@ -95,7 +95,6 @@ public class s_profile extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                FirebaseUser user = firebaseAuth.getCurrentUser();
                                 mData.child(user.getUid()).child("status").setValue("disabled");
                                 user.delete();
                                 Toast.makeText(s_profile.this, "User successfully removed from the database", Toast.LENGTH_SHORT).show();
