@@ -67,6 +67,7 @@ public class s_register extends AppCompatActivity {
                                 Toast.makeText(s_register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(s_register.this, s_login.class));
                                 saveUserInformation();
+                                finish();
                             } else {
                                 progressDialog.dismiss();
                                 Toast.makeText(s_register.this, "Registration Failed, Always required strong password and unique email", Toast.LENGTH_SHORT).show();
@@ -80,6 +81,7 @@ public class s_register extends AppCompatActivity {
         userLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(new Intent(s_register.this, s_login.class));
             }
         });

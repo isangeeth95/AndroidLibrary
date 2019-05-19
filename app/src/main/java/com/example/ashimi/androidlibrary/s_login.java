@@ -49,9 +49,23 @@ public class s_login extends AppCompatActivity {
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(new Intent(s_login.this, s_register.class));
             }
         });
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(firebaseAuth.getCurrentUser() != null){
+            finish();
+            startActivity(new Intent(s_login.this, s_homepage.class));
+            Toast.makeText(s_login.this, "You have aleary logged in", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void setupUIViews() {
@@ -72,6 +86,7 @@ public class s_login extends AppCompatActivity {
                 if(task.isSuccessful()){
                     progressDialog.dismiss();
                     Toast.makeText(s_login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    finish();
                     startActivity(new Intent(s_login.this, s_homepage.class));
                 } else {
                     progressDialog.dismiss();
