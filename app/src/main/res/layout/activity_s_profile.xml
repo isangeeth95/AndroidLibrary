@@ -91,7 +91,7 @@
 
     <TextView
         android:id="@+id/email_verification"
-        android:layout_width="91dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/card_dbName"
         android:layout_marginStart="0dp"
