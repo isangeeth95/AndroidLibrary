@@ -14,11 +14,15 @@ public class Config {
     public static final String BOOK_ID="book_id";
     public static final String BOOK_TITLE="book_title";
     public static final String BOOK_AUTHOR="book_author";
+    public static final String BOOK_CATEGORY="book_category";
+    public static final String BOOK_LOCATION="book_location";
     public static final String BOOK_RATING="book_rating";
     public static final String BOOK_COVER_PHOTO_URL="book_cover_photo_url";
 
     public final static String TITLE_EMPTY_MESSAGE="Title is required !";
     public final static String AUTHOR_EMPTY_MESSAGE="Author is required !";
+    public final static String CATEGORY_EMPTY_MESSAGE="Category is required !";
+    public final static String LOCATION_EMPTY_MESSAGE="Location is required !";
     public final static String RATING_ZERO_MESSAGE="Give some rating !";
     public final static String IMAGE_URL_NULL_MESSAGE="Choose an image !";
     public final static String BOOK_ADD_SUCCESS_MSG="Book added successfully !";

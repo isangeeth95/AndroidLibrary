@@ -18,7 +18,7 @@ import com.example.ashimi.androidlibrary.helpers.BookDatabaseHelper;
 import com.example.ashimi.androidlibrary.helpers.Config;
 
 public class AddBook extends AppCompatActivity implements View.OnClickListener {
-    private EditText titleField,authorField;
+    private EditText titleField,authorField,categoryField,locationField;
     private RatingBar ratingField;
     private ImageView coverPhotoField;
     private Button addBook;
@@ -33,6 +33,8 @@ public class AddBook extends AppCompatActivity implements View.OnClickListener {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         titleField=(EditText)findViewById( R.id.book_title_field);
         authorField=(EditText)findViewById( R.id.book_author_field);
+        categoryField=(EditText)findViewById( R.id.book_category);
+        locationField=(EditText)findViewById( R.id.book_location);
         ratingField=(RatingBar)findViewById( R.id.rating);
         coverPhotoField=(ImageView)findViewById( R.id.book_cover);
         addBook=(Button)findViewById( R.id.add);
@@ -72,9 +74,13 @@ public class AddBook extends AppCompatActivity implements View.OnClickListener {
     private void newBook() {
         String getTitle=titleField.getText().toString();
         String getAuthor=authorField.getText().toString();
+        String getCategory=categoryField.getText().toString();
+        String getLocation=locationField.getText().toString();
         float getRating=ratingField.getRating();
         boolean isTitleEmpty=titleField.getText().toString().isEmpty();
         boolean isAuthorEmpty=authorField.getText().toString().isEmpty();
+        boolean isCategoryEmpty=categoryField.getText().toString().isEmpty();
+        boolean isLocationEmpty=locationField.getText().toString().isEmpty();
         boolean isNoRating=ratingField.getRating()==0;
         boolean isNullPhotoURL=coverPhotoURL==null;
 
@@ -86,6 +92,14 @@ public class AddBook extends AppCompatActivity implements View.OnClickListener {
             authorField.setError(Config.AUTHOR_EMPTY_MESSAGE);
         }
 
+        if(isCategoryEmpty){
+            categoryField.setError(Config.CATEGORY_EMPTY_MESSAGE);
+        }
+
+        if(isLocationEmpty){
+            locationField.setError(Config.LOCATION_EMPTY_MESSAGE);
+        }
+
         if(isNoRating){
             Toast.makeText(this, Config.RATING_ZERO_MESSAGE, Toast.LENGTH_SHORT).show();
         }
@@ -94,9 +108,9 @@ public class AddBook extends AppCompatActivity implements View.OnClickListener {
             Toast.makeText(this, Config.IMAGE_URL_NULL_MESSAGE, Toast.LENGTH_SHORT).show();
         }
 
-        if(!isTitleEmpty && !isAuthorEmpty && !isNoRating && !isNullPhotoURL){
+        if(!isTitleEmpty && !isAuthorEmpty && !isCategoryEmpty && !isLocationEmpty && !isNoRating && !isNullPhotoURL){
             bookDatabaseHelper=new BookDatabaseHelper(getApplicationContext());
-            bookDatabaseHelper.add(getApplicationContext(),getTitle,getAuthor,getRating,coverPhotoURL);
+            bookDatabaseHelper.add(getApplicationContext(),getTitle,getAuthor,getLocation,getCategory,getRating,coverPhotoURL);
         }
     }
 }

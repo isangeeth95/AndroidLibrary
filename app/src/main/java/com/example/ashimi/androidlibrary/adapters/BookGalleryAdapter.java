@@ -60,10 +60,14 @@ public class BookGalleryAdapter extends BaseAdapter {
         option=(ImageView)convertView.findViewById( R.id.option);
         TextView title=(TextView)convertView.findViewById( R.id.title);
         TextView author=(TextView)convertView.findViewById( R.id.author);
+        TextView category=(TextView)convertView.findViewById( R.id.category);
+        TextView location=(TextView)convertView.findViewById( R.id.location);
         RatingBar rating=(RatingBar)convertView.findViewById( R.id.rating);
         final Book book=books.get(position);
         title.setText(book.getTitle());
         author.setText(book.getAuthor());
+        category.setText(book.getCategory());
+        location.setText(book.getLocation());
         rating.setRating(book.getRating());
         bookDatabaseHelper=new BookDatabaseHelper(context);
         Glide.with(context).load(book.getCoverPhotoURL()).crossFade(1000).diskCacheStrategy(DiskCacheStrategy.ALL).into(coverPhoto);
@@ -82,6 +86,8 @@ public class BookGalleryAdapter extends BaseAdapter {
                                 intent.putExtra(Config.BOOK_ID,book.getId());
                                 intent.putExtra(Config.BOOK_TITLE,book.getTitle());
                                 intent.putExtra(Config.BOOK_AUTHOR,book.getAuthor());
+                                intent.putExtra(Config.BOOK_CATEGORY,book.getCategory());
+                                intent.putExtra(Config.BOOK_LOCATION,book.getLocation());
                                 intent.putExtra(Config.BOOK_RATING,book.getRating());
                                 intent.putExtra(Config.BOOK_COVER_PHOTO_URL,book.getCoverPhotoURL());
                                 context.startActivity(intent);

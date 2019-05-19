@@ -42,6 +42,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+            <TextView
+                android:id="@+id/category"
+                android:text="Enter book category..."
+                android:textSize="12sp"
+                android:layout_below="@+id/author"
+                android:layout_marginLeft="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/location"
+                android:text="Enter book location..."
+                android:textSize="12sp"
+                android:layout_below="@+id/category"
+                android:layout_marginLeft="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <RatingBar
                 android:id="@+id/rating"
                 android:rating="3.5"
@@ -49,7 +69,7 @@
                 android:numStars="5"
                 android:layout_marginLeft="3dp"
                 android:layout_marginBottom="10dp"
-                android:layout_below="@+id/author"
+                android:layout_below="@+id/location"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

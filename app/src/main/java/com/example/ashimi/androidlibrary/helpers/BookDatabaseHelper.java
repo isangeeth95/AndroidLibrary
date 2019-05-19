@@ -40,7 +40,7 @@ public class BookDatabaseHelper {
     }
 
     // add new book into the firebase database
-    public void add(final Context context,final String title, final String author, final float rating, final Uri coverPhotoURL){
+    public void add(final Context context,final String title, final String author,final String category,final String location, final float rating, final Uri coverPhotoURL){
         databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE);
         Config.showToast(Config.BOOK_ADDING_MESSAGE,context);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -62,7 +62,7 @@ public class BookDatabaseHelper {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if(task.isSuccessful()){
                             Uri downloadURi=task.getResult();
-                            Book book=new Book(title,author,rating,downloadURi.toString());
+                            Book book=new Book(title,author,rating,location,category,downloadURi.toString());
                             databaseReference.child(uniqueKey).setValue(book);
                             Config.showToast(Config.BOOK_ADD_SUCCESS_MSG,context);
                         }
@@ -127,7 +127,7 @@ public class BookDatabaseHelper {
     }
 
     // edit book according to the id
-    public void edit(final Context context,final String id,final String title, final String author, final float rating, final Uri coverPhotoURL){
+    public void edit(final Context context,final String id,final String title, final String author,final String category,final String location, final float rating, final Uri coverPhotoURL){
         databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE).child(id);
         Config.showToast(Config.BOOK_UPDATING_MESSAGE,context);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -148,7 +148,7 @@ public class BookDatabaseHelper {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if(task.isSuccessful()){
                             Uri downloadURi=task.getResult();
-                            Book book=new Book(title,author,rating,downloadURi.toString());
+                            Book book=new Book(title,author,rating,location,category,downloadURi.toString());
                             databaseReference.setValue(book);
                             Config.showToast(Config.BOOK_UPDATE_SUCCESS_MSG,context);
                         }

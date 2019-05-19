@@ -20,7 +20,7 @@ import com.example.ashimi.androidlibrary.helpers.BookDatabaseHelper;
 import com.example.ashimi.androidlibrary.helpers.Config;
 
 public class Update extends AppCompatActivity implements View.OnClickListener {
-    private EditText titleField,authorField;
+    private EditText titleField,authorField,categoryField,locationField;
     private RatingBar ratingField;
     private ImageView coverPhotoField;
     private Button editBook;
@@ -36,11 +36,15 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
         bookDatabaseHelper=new BookDatabaseHelper(this);
         titleField=(EditText)findViewById( R.id.book_title_field);
         authorField=(EditText)findViewById( R.id.book_author_field);
+        categoryField=(EditText)findViewById( R.id.book_category);
+        locationField=(EditText)findViewById( R.id.book_location);
         ratingField=(RatingBar)findViewById( R.id.rating);
         coverPhotoField=(ImageView)findViewById( R.id.book_cover);
         editBook=(Button)findViewById( R.id.edit_book);
         titleField.setText(getIntent().getExtras().getString(Config.BOOK_TITLE));
         authorField.setText(getIntent().getExtras().getString(Config.BOOK_AUTHOR));
+        categoryField.setText(getIntent().getExtras().getString(Config.BOOK_CATEGORY));
+        locationField.setText(getIntent().getExtras().getString(Config.BOOK_LOCATION));
         ratingField.setRating(getIntent().getExtras().getFloat(Config.BOOK_RATING));
         Glide.with(this).load(getIntent().getExtras().getString(Config.BOOK_COVER_PHOTO_URL)).
                 crossFade(1000).diskCacheStrategy(DiskCacheStrategy.ALL).into(coverPhotoField);
@@ -80,9 +84,13 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
     private void update() {
         String getTitle=titleField.getText().toString();
         String getAuthor=authorField.getText().toString();
+        String getCategory=categoryField.getText().toString();
+        String getLocation=locationField.getText().toString();
         float getRating=ratingField.getRating();
         boolean isTitleEmpty=titleField.getText().toString().isEmpty();
         boolean isAuthorEmpty=authorField.getText().toString().isEmpty();
+        boolean isCategoryEmpty=categoryField.getText().toString().isEmpty();
+        boolean isLocationEmpty=locationField.getText().toString().isEmpty();
         boolean isNoRating=ratingField.getRating()==0;
         boolean isNullPhotoURL=coverPhotoURL==null;
         String book_id=getIntent().getExtras().getString(Config.BOOK_ID);
@@ -95,6 +103,14 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
             authorField.setError(Config.AUTHOR_EMPTY_MESSAGE);
         }
 
+        if(isCategoryEmpty){
+            categoryField.setError(Config.CATEGORY_EMPTY_MESSAGE);
+        }
+
+        if(isLocationEmpty){
+            locationField.setError(Config.LOCATION_EMPTY_MESSAGE);
+        }
+
         if(isNoRating){
             Toast.makeText(this, Config.RATING_ZERO_MESSAGE, Toast.LENGTH_SHORT).show();
         }
@@ -104,7 +120,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
         }
 
         if(!isTitleEmpty && !isAuthorEmpty && !isNoRating && !isNullPhotoURL){
-            bookDatabaseHelper.edit(getApplicationContext(),book_id,getTitle,getAuthor,getRating,coverPhotoURL);
+            bookDatabaseHelper.edit(getApplicationContext(),book_id,getTitle,getCategory,getLocation,getAuthor,getRating,coverPhotoURL);
         }
     }
 }
