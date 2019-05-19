@@ -65,8 +65,10 @@ public class s_register extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 progressDialog.dismiss();
                                 Toast.makeText(s_register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(s_register.this, s_login.class));
-                                saveUserInformation();
+                                if(saveUserInformation()){
+                                    finish();
+                                    startActivity(new Intent(s_register.this, s_login.class));
+                                }
                             } else {
                                 progressDialog.dismiss();
                                 Toast.makeText(s_register.this, "Registration Failed, Always required strong password and unique email", Toast.LENGTH_SHORT).show();
@@ -132,7 +134,9 @@ public class s_register extends AppCompatActivity {
         return result;
     }
 
-    private void saveUserInformation(){
+    private Boolean saveUserInformation(){
+        Boolean result = false;
+
         String user_name = name_Register.getText().toString().trim();
         String user_mobile = tp_Register.getText().toString().trim();
         String user_email = email_Register.getText().toString().trim();
@@ -146,7 +150,12 @@ public class s_register extends AppCompatActivity {
             mData.child("users").child(user.getUid()).child("user_name").setValue(user_name);
             mData.child("users").child(user.getUid()).child("mobile_number").setValue(user_mobile);
             mData.child("users").child(user.getUid()).child("status").setValue(status);
+
+            result = true;
         }
+
+        firebaseAuth.signOut();
+        return result;
     }
 
 }

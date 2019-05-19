@@ -35,8 +35,6 @@ public class s_login extends AppCompatActivity {
         setupUIViews();
 
         firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-
         login_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,8 +58,8 @@ public class s_login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        if(firebaseAuth.getCurrentUser() != null){
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user != null){
             finish();
             startActivity(new Intent(s_login.this, s_homepage.class));
             Toast.makeText(s_login.this, "You have aleary logged in", Toast.LENGTH_SHORT).show();

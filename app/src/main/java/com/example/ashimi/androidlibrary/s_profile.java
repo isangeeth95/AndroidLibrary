@@ -49,23 +49,6 @@ public class s_profile extends AppCompatActivity {
         setupUIViews();
         final FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        if(user.isEmailVerified()){
-            email_verification.setText("Verified");
-        }else{
-            email_verification.setText("Not Verified, Click to verify!");
-            email_verification.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(s_profile.this, "Verification EMail sent", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            });
-        }
-
         mData = FirebaseDatabase.getInstance().getReference().child("users");
         mData.addValueEventListener(new ValueEventListener() {
             @Override
@@ -73,7 +56,22 @@ public class s_profile extends AppCompatActivity {
                 dbName.setText((String)dataSnapshot.child(user.getUid()).child("user_name").getValue());
                 dbEmail.setText((String)dataSnapshot.child(user.getUid()).child("user_email").getValue());
                 dbMobile.setText((String)dataSnapshot.child(user.getUid()).child("mobile_number").getValue());
-
+                if(user.isEmailVerified()){
+                    email_verification.setText("Verified");
+                }else{
+                    email_verification.setText("Not Verified, Click to verify!");
+                    email_verification.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(s_profile.this, "Verification EMail sent", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    });
+                }
             }
 
             @Override
