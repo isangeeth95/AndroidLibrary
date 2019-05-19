@@ -156,6 +156,7 @@
             android:background="@color/background_register"
             android:text="Already signed up ? Login"
             android:textSize="20dp"
+            android:textStyle="bold"
             android:textColor="#ba160c"/>
 
     </RelativeLayout>

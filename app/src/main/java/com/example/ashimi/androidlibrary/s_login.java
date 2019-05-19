@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class s_login extends AppCompatActivity {
     TextView register_btn;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
+    TextView forgotPassword_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,27 @@ public class s_login extends AppCompatActivity {
             }
         });
 
+        forgotPassword_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String forgotPasswordEmail = email.getText().toString().trim();
+                if(TextUtils.isEmpty(forgotPasswordEmail)){
+                    Toast.makeText(s_login.this, "Please enter your valid email address", Toast.LENGTH_SHORT).show();
+                }else{
+                    firebaseAuth.sendPasswordResetEmail(forgotPasswordEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(s_login.this, "Please check your mails, and reset your password", Toast.LENGTH_SHORT).show();
+                            }else{
+                                String message = task.getException().getMessage();
+                                Toast.makeText(s_login.this, "Error occurred. " +message, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            }
+        });
 
     }
 
@@ -72,6 +95,7 @@ public class s_login extends AppCompatActivity {
         login_Btn = (CardView) findViewById(R.id.card_login);
         register_btn = (TextView) findViewById(R.id.register_text);
         progressDialog = new ProgressDialog(this);
+        forgotPassword_btn = (TextView)findViewById(R.id.forgotPassword);
     }
 
     private void login(String user_email, String user_password){
