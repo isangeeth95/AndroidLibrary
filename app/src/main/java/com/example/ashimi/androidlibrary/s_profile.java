@@ -34,7 +34,7 @@ public class s_profile extends AppCompatActivity {
     CardView get_profileForm;
     DatabaseReference mData;
     ProgressDialog progressDialog;
-    ImageView image, deleteUser;
+    ImageView image, deleteUser, logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,6 @@ public class s_profile extends AppCompatActivity {
         mData.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                FirebaseUser user = firebaseAuth.getCurrentUser();
                 dbName.setText((String)dataSnapshot.child(user.getUid()).child("user_name").getValue());
                 dbEmail.setText((String)dataSnapshot.child(user.getUid()).child("user_email").getValue());
                 dbMobile.setText((String)dataSnapshot.child(user.getUid()).child("mobile_number").getValue());
@@ -61,10 +60,19 @@ public class s_profile extends AppCompatActivity {
             }
         });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(s_profile.this, s_login.class));
+                Toast.makeText(s_profile.this, "Successfully singed out", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         get_profileForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 System.out.println(dbName.getText().toString().trim());
                 System.out.println(dbMobile.getText().toString().trim());
 
@@ -125,6 +133,7 @@ public class s_profile extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         image = (ImageView)findViewById(R.id.imageView2);
         deleteUser = (ImageView)findViewById(R.id.deleteUserImage);
+        logout = (ImageView)findViewById(R.id.logout);
     }
 
     private Boolean validate(String user, String mobile){

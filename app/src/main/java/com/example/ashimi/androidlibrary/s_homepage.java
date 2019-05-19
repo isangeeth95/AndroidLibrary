@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -66,11 +67,12 @@ public class s_homepage extends AppCompatActivity {
             }
         });
 
-        login_view.setOnClickListener(new View.OnClickListener() {
+        location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_login_view=new Intent(s_homepage.this, s_login.class);
-                startActivity(intent_login_view);
+//                Intent intent_login_view=new Intent(s_homepage.this, s_login.class);
+//                startActivity(intent_login_view);
+                Toast.makeText(s_homepage.this, "NO locations set",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -82,7 +84,7 @@ public class s_homepage extends AppCompatActivity {
             }
         });
 
-        location.setOnClickListener(new View.OnClickListener() {
+        login_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(s_homepage.this, s_profile.class));

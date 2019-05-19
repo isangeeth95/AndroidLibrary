@@ -17,13 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".s_homepage" />
         <activity android:name=".s_profile"></activity>
         <activity
             android:name=".s_register"
             android:label="@string/title_activity_s_register"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".s_login" />
-        <activity android:name=".s_homepage">
+        <activity android:name=".s_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
