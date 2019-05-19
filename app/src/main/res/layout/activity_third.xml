@@ -4,38 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#93dff9"
+    android:background="@drawable/libaray"
     tools:context=".third">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="270dp"
-        android:layout_height="27dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Science and Research"
-        android:textColor="@android:color/background_dark"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.020" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="368dp"
-        android:layout_height="2dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#033d50"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.080"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_ebooks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:layout_editor_absoluteX="8dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="58dp" />
 
 </android.support.constraint.ConstraintLayout>
