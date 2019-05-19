@@ -13,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,7 +34,7 @@ import java.util.regex.Pattern;
 public class s_profile extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
-    TextView dbName, dbEmail, dbMobile;
+    TextView dbName, dbEmail, dbMobile, email_verification;
     CardView get_profileForm;
     DatabaseReference mData;
     ProgressDialog progressDialog;
@@ -51,6 +55,23 @@ public class s_profile extends AppCompatActivity {
                 dbName.setText((String)dataSnapshot.child(user.getUid()).child("user_name").getValue());
                 dbEmail.setText((String)dataSnapshot.child(user.getUid()).child("user_email").getValue());
                 dbMobile.setText((String)dataSnapshot.child(user.getUid()).child("mobile_number").getValue());
+
+                if(user.isEmailVerified()){
+                    email_verification.setText("Verified");
+                }else{
+                    email_verification.setText("Not Verified, Click to verify!");
+                    email_verification.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(s_profile.this, "Verification EMail sent", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    });
+                }
 
             }
 
@@ -134,6 +155,7 @@ public class s_profile extends AppCompatActivity {
         image = (ImageView)findViewById(R.id.imageView2);
         deleteUser = (ImageView)findViewById(R.id.deleteUserImage);
         logout = (ImageView)findViewById(R.id.logout);
+        email_verification = (TextView)findViewById(R.id.email_verification);
     }
 
     private Boolean validate(String user, String mobile){
