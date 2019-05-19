@@ -17,12 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".s_register"></activity>
+        <activity android:name=".s_register2" />
         <activity android:name=".s_homepage" />
-        <activity android:name=".s_profile"></activity>
-        <activity
-            android:name=".s_register"
-            android:label="@string/title_activity_s_register"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".s_profile" />
         <activity android:name=".s_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,9 +29,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Inventory_main" />
-        <activity android:name=".activities.MainActivity"/>
-        <activity android:name=".activities.AddBook"/>
-        <activity android:name=".activities.Update"/>
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.AddBook" />
+        <activity android:name=".activities.Update" />
         <activity android:name=".CATEGORIES" />
         <activity android:name=".second" />
         <activity android:name=".third" />
