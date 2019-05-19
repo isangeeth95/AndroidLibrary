@@ -31,7 +31,7 @@ public class Config {
     public static final int COVER_PHOTO_REQUEST_CODE=1000;
 
 
-    public final static String DATABASE_REFERENCE="Book";
+    public final static String DATABASE_REFERENCE="books";
     public final static String STORAGE_PATH="cover_photo/";
     public final static String BOOK_ADDING_MESSAGE="Adding book ....";
     public final static String BOOK_UPDATING_MESSAGE="Updating book ....";
@@ -39,11 +39,11 @@ public class Config {
     //show custom success toast
     public static void showToast(String message,Context context){
         LayoutInflater layoutInflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view=layoutInflater.inflate(R.layout.custom_toast_layout,null);
+        View view=layoutInflater.inflate( R.layout.custom_toast_layout,null);
         Toast toast=new Toast(context);
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(view);
-        ((TextView)view.findViewById(R.id.message)).setText(message);
+        ((TextView)view.findViewById( R.id.message)).setText(message);
         toast.show();
     }
 
