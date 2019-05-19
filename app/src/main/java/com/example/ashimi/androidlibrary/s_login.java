@@ -19,6 +19,11 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class s_login extends AppCompatActivity {
 
@@ -29,6 +34,7 @@ public class s_login extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
     TextView forgotPassword_btn;
+    DatabaseReference mData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,9 +113,30 @@ public class s_login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     progressDialog.dismiss();
-                    Toast.makeText(s_login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    finish();
-                    startActivity(new Intent(s_login.this, s_homepage.class));
+                    final FirebaseUser user = firebaseAuth.getCurrentUser();
+                    mData = FirebaseDatabase.getInstance().getReference().child("users");
+                    mData.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            String value = (String)dataSnapshot.child(user.getUid()).child("mode").getValue();
+                            System.out.println(value);
+                            if( value.equalsIgnoreCase("admin")){
+                                Toast.makeText(s_login.this, "Login Successful as ADMIN", Toast.LENGTH_SHORT).show();
+                                finish();
+                                startActivity(new Intent(s_login.this, s_adminDashboard.class));
+                            }
+                            else{
+                                Toast.makeText(s_login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                finish();
+                                startActivity(new Intent(s_login.this, s_homepage.class));
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 } else {
                     progressDialog.dismiss();
                     Toast.makeText(s_login.this, "Login Failed, Check credentials again", Toast.LENGTH_SHORT).show();
