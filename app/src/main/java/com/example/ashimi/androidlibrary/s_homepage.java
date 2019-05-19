@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class s_homepage extends AppCompatActivity {
 
     LinearLayout category_view;
-    LinearLayout login_view;
+    LinearLayout profile_view;
     LinearLayout inventory_view;
     LinearLayout location;
 //    Toolbar toolbar;
@@ -50,7 +50,7 @@ public class s_homepage extends AppCompatActivity {
         setContentView(R.layout.activity_s_homepage);
 
         category_view = (LinearLayout) findViewById(R.id.see_category);
-        login_view = (LinearLayout) findViewById(R.id.membership);
+        profile_view = (LinearLayout) findViewById(R.id.profile_view);
         inventory_view = (LinearLayout) findViewById(R.id.inventory);
         location = (LinearLayout)findViewById(R.id.profile_form);
 //        toolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -84,7 +84,7 @@ public class s_homepage extends AppCompatActivity {
             }
         });
 
-        login_view.setOnClickListener(new View.OnClickListener() {
+        profile_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(s_homepage.this, s_profile.class));
