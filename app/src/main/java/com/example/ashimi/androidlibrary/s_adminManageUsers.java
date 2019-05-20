@@ -21,7 +21,16 @@ public class s_adminManageUsers extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(new Intent(s_adminManageUsers.this, s_profile.class));
+            }
+        });
+
+        user_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(s_adminManageUsers.this, s_adminGetUserList.class));
             }
         });
     }
