@@ -168,7 +168,7 @@
                         android:layout_height="100dp"
                         android:contentDescription="TODO"
                         android:padding="10dp"
-                        android:src="@drawable/user_count"/>
+                        android:src="@drawable/borrow_books"/>
                         <!--android:src="@drawable/borrowing_icon"-->
 
 
