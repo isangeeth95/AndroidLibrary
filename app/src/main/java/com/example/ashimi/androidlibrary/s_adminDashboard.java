@@ -11,6 +11,7 @@ public class s_adminDashboard extends AppCompatActivity {
 
     LinearLayout bookManage;
     LinearLayout userManage;
+    LinearLayout lendingManage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class s_adminDashboard extends AppCompatActivity {
 
         bookManage = (LinearLayout) findViewById(R.id.bookManage);
         userManage = (LinearLayout) findViewById(R.id.userManage);
+        lendingManage = (LinearLayout) findViewById(R.id.lendingManage);
 
         bookManage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,6 +30,19 @@ public class s_adminDashboard extends AppCompatActivity {
                 startActivity(intent_view_book);
             }
         });
+
+        lendingManage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(s_adminDashboard.this, Activity_lending_main.class));
+            }
+        });
+
+//        lendingManage.setOnClickListener({
+//                startActivity(new Intent(s_adminDashboard.this, Activity_lending_main.class));
+//
+//        })
 //        userManage.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
