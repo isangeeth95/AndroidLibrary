@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ashimi.androidlibrary">
-
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -18,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".s_adminManageUsers"></activity>
         <activity android:name=".s_adminDashboard" />
         <activity android:name=".s_register" />
         <activity android:name=".s_register2" />
@@ -45,7 +45,7 @@
         <activity android:name=".EditEBook" />
         <activity android:name=".DeleteEBook" />
         <activity android:name=".EBookDetailsActivity" />
-        <activity android:name=".Activity_lending_main"/>
+        <activity android:name=".Activity_lending_main" />
     </application>
 
 </manifest>
