@@ -1,13 +1,34 @@
 package com.example.ashimi.androidlibrary;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 public class s_adminManageUsers extends AppCompatActivity {
+
+    LinearLayout add_note;
+    LinearLayout user_list;
+    LinearLayout profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_admin_manage_users);
+        setupUIViews();
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(s_adminManageUsers.this, s_profile.class));
+            }
+        });
+    }
+
+    private void setupUIViews(){
+        add_note = (LinearLayout)findViewById(R.id.add_note);
+        user_list = (LinearLayout)findViewById(R.id.user_list);
+        profile = (LinearLayout)findViewById(R.id.profile);
     }
 }
