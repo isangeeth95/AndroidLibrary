@@ -35,6 +35,14 @@ public class s_adminManageUsers extends AppCompatActivity {
                 Toast.makeText(s_adminManageUsers.this,"Admin get user list clicked", Toast.LENGTH_SHORT).show();
             }
         });
+
+        add_note.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(s_adminManageUsers.this, s_imageCapture.class));
+            }
+        });
     }
 
     private void setupUIViews(){
