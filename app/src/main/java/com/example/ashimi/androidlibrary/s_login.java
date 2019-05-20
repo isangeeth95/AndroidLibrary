@@ -87,11 +87,18 @@ public class s_login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        String adminId = "WKRpsg6rdlO4KD4p2nXEHLq1RWe2";
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if(user != null){
-            finish();
-            startActivity(new Intent(s_login.this, s_homepage.class));
-            Toast.makeText(s_login.this, "You have aleary logged in", Toast.LENGTH_SHORT).show();
+            if(adminId.equalsIgnoreCase(user.getUid())){
+                finish();
+                startActivity(new Intent(s_login.this, s_adminDashboard.class));
+                Toast.makeText(s_login.this, "You have already logged in as Admin", Toast.LENGTH_SHORT).show();
+            }else {
+                finish();
+                startActivity(new Intent(s_login.this, s_homepage.class));
+                Toast.makeText(s_login.this, "You have already logged in", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
