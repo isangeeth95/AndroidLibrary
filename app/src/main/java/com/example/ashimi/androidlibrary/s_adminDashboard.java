@@ -29,7 +29,7 @@ public class s_adminDashboard extends AppCompatActivity {
         bookManage = (LinearLayout) findViewById(R.id.bookManage);
         userManage = (LinearLayout) findViewById(R.id.userManage);
         logout = (ImageView)findViewById(R.id.logout);
-//        lendingManage = (LinearLayout) findViewById(R.id.lendingManage);
+        lendingManage = (LinearLayout) findViewById(R.id.lendingManage);
 
         bookManage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,13 +57,13 @@ public class s_adminDashboard extends AppCompatActivity {
             }
         });
 
-//        lendingManage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                System.out.print("i am working");
-//                startActivity(new Intent(s_adminDashboard.this, Activity_lending_main.class));
-//            }
-//        });
+        lendingManage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.print("i am working");
+                startActivity(new Intent(s_adminDashboard.this, Activity_lending_main.class));
+            }
+        });
 
 //        lendingManage.setOnClickListener({
 //                startActivity(new Intent(s_adminDashboard.this, Activity_lending_main.class));
