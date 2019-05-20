@@ -87,23 +87,31 @@ public class s_login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+        mData = FirebaseDatabase.getInstance().getReference().child("users");
         if(user != null){
-//            finish();
-////            startActivity(new Intent(s_login.this, s_homepage.class));
-////            Toast.makeText(s_login.this, "You have aleary logged in", Toast.LENGTH_SHORT).show();
-            String value = user.getEmail().toString();
-            System.out.println(value);
-            if( value.equalsIgnoreCase("admin@gmail.com")){
-                Toast.makeText(s_login.this, "Login Successful as ADMIN", Toast.LENGTH_SHORT).show();
-                finish();
-                startActivity(new Intent(s_login.this, s_adminDashboard.class));
-            }
-            else{
-                Toast.makeText(s_login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                finish();
-                startActivity(new Intent(s_login.this, s_homepage.class));
-            }
+            mData.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String value = (String)dataSnapshot.child(user.getUid()).child("mode").getValue();
+                    System.out.println(value);
+                    if( value.equalsIgnoreCase("admin")){
+                        Toast.makeText(s_login.this, "You have already logged in as ADMIN", Toast.LENGTH_SHORT).show();
+                        finish();
+                        startActivity(new Intent(s_login.this, s_adminDashboard.class));
+                    }
+                    else{
+                        Toast.makeText(s_login.this, "You have already logged in", Toast.LENGTH_SHORT).show();
+                        finish();
+                        startActivity(new Intent(s_login.this, s_homepage.class));
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
     }
 
