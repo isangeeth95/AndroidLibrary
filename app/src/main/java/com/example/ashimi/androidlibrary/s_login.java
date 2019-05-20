@@ -89,9 +89,21 @@ public class s_login extends AppCompatActivity {
         super.onStart();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if(user != null){
-            finish();
-            startActivity(new Intent(s_login.this, s_homepage.class));
-            Toast.makeText(s_login.this, "You have aleary logged in", Toast.LENGTH_SHORT).show();
+//            finish();
+////            startActivity(new Intent(s_login.this, s_homepage.class));
+////            Toast.makeText(s_login.this, "You have aleary logged in", Toast.LENGTH_SHORT).show();
+            String value = user.getEmail().toString();
+            System.out.println(value);
+            if( value.equalsIgnoreCase("admin@gmail.com")){
+                Toast.makeText(s_login.this, "Login Successful as ADMIN", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(new Intent(s_login.this, s_adminDashboard.class));
+            }
+            else{
+                Toast.makeText(s_login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(new Intent(s_login.this, s_homepage.class));
+            }
         }
     }
 
