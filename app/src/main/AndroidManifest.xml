@@ -17,7 +17,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".s_adminGetUserList"></activity>
         <activity android:name=".s_adminManageUsers" />
         <activity android:name=".s_adminDashboard" />
         <activity android:name=".s_register" />

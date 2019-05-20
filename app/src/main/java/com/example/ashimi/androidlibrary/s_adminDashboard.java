@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class s_adminDashboard extends AppCompatActivity {
@@ -24,7 +25,6 @@ public class s_adminDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_panel);
-
         firebaseAuth = FirebaseAuth.getInstance();
         bookManage = (LinearLayout) findViewById(R.id.bookManage);
         userManage = (LinearLayout) findViewById(R.id.userManage);
