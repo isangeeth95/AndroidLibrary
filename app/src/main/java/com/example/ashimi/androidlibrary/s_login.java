@@ -109,7 +109,7 @@ public class s_login extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                    Toast.makeText(s_login.this, "Error occurred!  contact the admin", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -154,7 +154,7 @@ public class s_login extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            Toast.makeText(s_login.this, "Error occurred!  contact the admin", Toast.LENGTH_SHORT).show();
                         }
                     });
                 } else {
