@@ -226,7 +226,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Add Note"
+                        android:text="Camera"
                         android:textStyle="bold" />
 
                     <View
@@ -240,7 +240,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Add notes of the activities"
+                        android:text="Take images using the app and enjoy"
                         android:textColor="@android:color/darker_gray" />
 
                 </LinearLayout>
