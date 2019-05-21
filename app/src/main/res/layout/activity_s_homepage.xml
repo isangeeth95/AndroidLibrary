@@ -218,7 +218,7 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:background="@drawable/cerclebackgroundpurple"
+                    android:background="#FF0000	"
                     android:src="@drawable/ic_exit_to_app_black_24dp"
                     android:padding="10dp"/>
                 <TextView
