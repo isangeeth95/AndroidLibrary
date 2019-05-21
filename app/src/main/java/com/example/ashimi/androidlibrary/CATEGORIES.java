@@ -48,13 +48,13 @@ Toast.makeText( CATEGORIES.this, "FireBase connection Success", Toast.LENGTH_LON
             }
         });
 
-        button2.setOnClickListener(new View.OnClickListener() {
+       /* button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent int2 = new Intent(CATEGORIES.this,third.class);
                 startActivity(int2);
             }
-        });
+        });*/
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

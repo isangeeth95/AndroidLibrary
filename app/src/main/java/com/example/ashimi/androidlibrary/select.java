@@ -33,7 +33,7 @@ public class select extends AppCompatActivity implements View.OnClickListener {
         button11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent int21 = new Intent(select.this,EditEBook.class);
+                Intent int21 = new Intent(select.this,third.class);
                 startActivity(int21);
             }
         });
