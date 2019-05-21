@@ -49,6 +49,8 @@
         <activity android:name=".EBookDetailsActivity" />
         <activity android:name=".Activity_lending_main" />
         <activity android:name=".Activity_Borrowing"></activity>
+
+        <activity android:name=".Sample"/>
     </application>
 
 </manifest>

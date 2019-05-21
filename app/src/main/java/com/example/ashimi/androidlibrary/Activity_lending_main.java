@@ -18,7 +18,7 @@ public class Activity_lending_main extends AppCompatActivity {
         lendingMainBorrowBtn =(Button) findViewById(R.id.lendingMainBorrowBtn);
         lendingMainBorrowBtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                startActivity(new Intent(Activity_lending_main.this, Activity_Borrowing.class));
+                startActivity(new Intent(Activity_lending_main.this, Sample.class));
             }
         });
     }

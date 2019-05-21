@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.ashimi.androidlibrary.activities.MainActivity;
 import com.example.ashimi.androidlibrary.models.Book;
 import com.example.ashimi.androidlibrary.models.Borrowing;
+import com.example.ashimi.androidlibrary.s_profile;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,7 +39,7 @@ public class BorrowingDatabaseHelper {
         //databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE);
         //Config.showToast(Config.BOOK_ADDING_MESSAGE,context);
 
-        databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE).child("Borrowing");
+        databaseReference=FirebaseDatabase.getInstance().getReference().child("Borrowing");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
@@ -45,7 +48,7 @@ public class BorrowingDatabaseHelper {
                     maxID = (dataSnapshot.getChildrenCount());
 
                 }
-//                databaseReference.child(String.valueOf(maxID + 1)).setValue(newBorrower);
+                databaseReference.child(String.valueOf(maxID + 1)).setValue(newBorrower);
 
 
 
@@ -56,6 +59,10 @@ public class BorrowingDatabaseHelper {
 
             }
         });
+//        int id=1;
+//        databaseReference.child(String.valueOf( id )).child("user_name").setValue(user_name());
+//        databaseReference.child(String.valueOf( id )).child("isbn").setValue(user_name);
+
         if(maxID == null){
             maxID = (long) 0;
         }
@@ -63,4 +70,7 @@ public class BorrowingDatabaseHelper {
 
 
     }
+//    private String user_name(){
+//       return "name";
+//    }
 }
