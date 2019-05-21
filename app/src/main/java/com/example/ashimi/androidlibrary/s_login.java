@@ -87,31 +87,18 @@ public class s_login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        final FirebaseUser user = firebaseAuth.getCurrentUser();
-        mData = FirebaseDatabase.getInstance().getReference().child("users");
+        String adminId = "WKRpsg6rdlO4KD4p2nXEHLq1RWe2";
+        FirebaseUser user = firebaseAuth.getCurrentUser();
         if(user != null){
-            mData.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    String value = (String)dataSnapshot.child(user.getUid()).child("mode").getValue();
-                    System.out.println(value);
-                    if( value.equalsIgnoreCase("admin")){
-                        Toast.makeText(s_login.this, "You have already logged in as ADMIN", Toast.LENGTH_SHORT).show();
-                        finish();
-                        startActivity(new Intent(s_login.this, s_adminDashboard.class));
-                    }
-                    else{
-                        Toast.makeText(s_login.this, "You have already logged in", Toast.LENGTH_SHORT).show();
-                        finish();
-                        startActivity(new Intent(s_login.this, s_homepage.class));
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(s_login.this, "Error occurred!  contact the admin", Toast.LENGTH_SHORT).show();
-                }
-            });
+            if(adminId.equalsIgnoreCase(user.getUid())){
+                finish();
+                startActivity(new Intent(s_login.this, s_adminDashboard.class));
+                Toast.makeText(s_login.this, "You have already logged in as Admin", Toast.LENGTH_SHORT).show();
+            }else {
+                finish();
+                startActivity(new Intent(s_login.this, s_homepage.class));
+                Toast.makeText(s_login.this, "You have already logged in", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -124,7 +111,7 @@ public class s_login extends AppCompatActivity {
         forgotPassword_btn = (TextView)findViewById(R.id.forgotPassword);
     }
 
-    private void login(String user_email, String user_password){
+    private void login(final String user_email, String user_password){
 
         progressDialog.setMessage("Login");
         progressDialog.show();
@@ -133,31 +120,18 @@ public class s_login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     progressDialog.dismiss();
-                    final FirebaseUser user = firebaseAuth.getCurrentUser();
-                    mData = FirebaseDatabase.getInstance().getReference().child("users");
-                    mData.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            String value = (String)dataSnapshot.child(user.getUid()).child("mode").getValue();
-                            System.out.println(value);
-                            if( value.equalsIgnoreCase("admin")){
-                                Toast.makeText(s_login.this, "Login Successful as ADMIN", Toast.LENGTH_SHORT).show();
-                                finish();
-                                startActivity(new Intent(s_login.this, s_adminDashboard.class));
-                            }
-                            else{
-                                Toast.makeText(s_login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                finish();
-                                startActivity(new Intent(s_login.this, s_homepage.class));
-                            }
+                        if(user_email.equalsIgnoreCase("admin@gmail.com")){
+                            progressDialog.dismiss();
+                            Toast.makeText(s_login.this, "Login Successful as admin", Toast.LENGTH_SHORT).show();
+                            finish();
+                            startActivity(new Intent(s_login.this, s_adminDashboard.class));
+                        }else {
+                            progressDialog.dismiss();
+                            Toast.makeText(s_login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            finish();
+                            startActivity(new Intent(s_login.this, s_homepage.class));
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            Toast.makeText(s_login.this, "Error occurred!  contact the admin", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                } else {
+                    } else {
                     progressDialog.dismiss();
                     Toast.makeText(s_login.this, "Login Failed, Check credentials again", Toast.LENGTH_SHORT).show();
                 }
