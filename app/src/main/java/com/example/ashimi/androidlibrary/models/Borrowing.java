@@ -15,6 +15,12 @@ public class Borrowing {
         this.outdate = outdate;
     }
 
+    public Borrowing(Borrowing bwr) {
+        this.ISBN = bwr.ISBN;
+        this.borrowerID = bwr.borrowerID;
+        this.outdate = bwr.outdate;
+    }
+
     //setters
 
     public void setISBN(String ISBN) {

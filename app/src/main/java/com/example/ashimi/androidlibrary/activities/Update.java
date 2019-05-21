@@ -120,7 +120,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
         }
 
         if(!isTitleEmpty && !isAuthorEmpty && !isNoRating && !isNullPhotoURL){
-            bookDatabaseHelper.edit(getApplicationContext(),book_id,getTitle,getCategory,getLocation,getAuthor,getRating,coverPhotoURL);
+            //bookDatabaseHelper.edit(getApplicationContext(),book_id,getTitle,getCategory,getLocation,getAuthor,getRating,coverPhotoURL,);
         }
     }
 }

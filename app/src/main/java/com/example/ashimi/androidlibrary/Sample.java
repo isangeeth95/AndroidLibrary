@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ashimi.androidlibrary.helpers.BorrowingDatabaseHelper;
 import com.example.ashimi.androidlibrary.models.Borrowing;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,66 +18,5 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Sample extends AppCompatActivity {
-    EditText borrowISDM,borrowUserID;
-    Button borrowIssueButton;
-    DatabaseReference ref;
-    long maxID=0;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity__borrowing);
-
-        borrowISDM = findViewById( R.id.borrowISDM );
-        borrowUserID = findViewById( R.id.borrowUserID );
-        borrowIssueButton = findViewById( R.id.borrowIssueButton );
-
-        ref = FirebaseDatabase.getInstance().getReference().child("WebBorrowing");
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    maxID = (dataSnapshot.getChildrenCount());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        borrowIssueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(borrowISDM.getText().toString().isEmpty()&& borrowUserID.getText().toString().isEmpty()){
-                    Toast.makeText(Sample.this,"Cannot have Emty Fields", Toast.LENGTH_SHORT).show();
-                }
-
-                else {
-                    try {
-
-                        Borrowing brw = new Borrowing();
-
-                        brw.setISBN( (borrowISDM.getText().toString()));
-                        brw.setBorrowerID(borrowUserID.getText().toString());
-                        brw.setOutdate("fgfg");
-
-                        brw.getISBN();
-                        brw.getBorrowerID();
-                        brw.getOutdate();
-
-                        ref.child(String.valueOf(maxID + 1)).setValue(brw);
-
-                        Toast.makeText(Sample.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
-                    }catch (Exception e){
-                        Log.e("Error", e.getLocalizedMessage());
-                        Toast.makeText(Sample.this,"error"+ e, Toast.LENGTH_LONG).show();
-                    }
-
-                }
-            }
-        });
-    }
 }

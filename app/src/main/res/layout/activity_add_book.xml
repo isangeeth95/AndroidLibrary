@@ -22,6 +22,14 @@
 
 
                 <EditText
+                    android:id="@+id/book_ISBN_field"
+                    android:hint="Enter book ISBN"
+                    android:padding="15dp"
+                    android:layout_margin="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <EditText
                     android:id="@+id/book_title_field"
                     android:hint="Enter book title"
                     android:padding="15dp"
@@ -57,6 +65,16 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginBottom="15dp"
                     android:hint="Enter Location"
+                    android:padding="15dp" />
+
+                <EditText
+                    android:id="@+id/book_quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:hint="Enter Quantity"
                     android:padding="15dp" />
 
                 <RatingBar
