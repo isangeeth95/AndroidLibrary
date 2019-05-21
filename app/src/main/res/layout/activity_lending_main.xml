@@ -6,19 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".Activity_lending_main">
 
+
+
     <Button
-        android:id="@+id/lendingMainBorrowBtn"
+        android:id="@+id/issueBooksBtn"
         android:layout_width="354dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="New Borrowing"
+        android:text="Issue Books"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.12" />
+
+    <Button
+        android:id="@+id/retunBtn"
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Discharging books"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/issueBooksBtn"
+        app:layout_constraintVertical_bias="0.12" />
+
+    <Button
+        android:id="@+id/availableBtn"
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Check Availability"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/retunBtn"
+        app:layout_constraintVertical_bias="0.12" />
+
+
 </android.support.constraint.ConstraintLayout>
