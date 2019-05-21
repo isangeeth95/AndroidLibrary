@@ -20,7 +20,7 @@ import com.example.ashimi.androidlibrary.helpers.BookDatabaseHelper;
 import com.example.ashimi.androidlibrary.helpers.Config;
 
 public class Update extends AppCompatActivity implements View.OnClickListener {
-    private EditText titleField,authorField,categoryField,locationField;
+    private EditText titleField,authorField,categoryField,locationField,ISBNField,quantityField;
     private RatingBar ratingField;
     private ImageView coverPhotoField;
     private Button editBook;
@@ -38,10 +38,14 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
         authorField=(EditText)findViewById( R.id.book_author_field);
         categoryField=(EditText)findViewById( R.id.book_category);
         locationField=(EditText)findViewById( R.id.book_location);
+        ISBNField = (EditText) findViewById( R.id.book_ISBN_field );
+        quantityField = (EditText) findViewById( R.id.book_quantity );
         ratingField=(RatingBar)findViewById( R.id.rating);
         coverPhotoField=(ImageView)findViewById( R.id.book_cover);
         editBook=(Button)findViewById( R.id.edit_book);
         titleField.setText(getIntent().getExtras().getString(Config.BOOK_TITLE));
+        ISBNField.setText(getIntent().getExtras().getString(Config.BOOK_ISBNF));
+        quantityField.setText(getIntent().getExtras().getString(Config.Book_QUANTITY));
         authorField.setText(getIntent().getExtras().getString(Config.BOOK_AUTHOR));
         categoryField.setText(getIntent().getExtras().getString(Config.BOOK_CATEGORY));
         locationField.setText(getIntent().getExtras().getString(Config.BOOK_LOCATION));
@@ -86,7 +90,11 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
         String getAuthor=authorField.getText().toString();
         String getCategory=categoryField.getText().toString();
         String getLocation=locationField.getText().toString();
+        String getISBNF=ISBNField.getText().toString();
+        int getQuantity = Integer.valueOf(quantityField.getText().toString());
         float getRating=ratingField.getRating();
+        boolean isISBNFEmpty=ISBNField.getText().toString().isEmpty();
+        boolean isQuantityEmpty=quantityField.getText().toString().isEmpty();
         boolean isTitleEmpty=titleField.getText().toString().isEmpty();
         boolean isAuthorEmpty=authorField.getText().toString().isEmpty();
         boolean isCategoryEmpty=categoryField.getText().toString().isEmpty();
@@ -101,6 +109,14 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
 
         if(isAuthorEmpty){
             authorField.setError(Config.AUTHOR_EMPTY_MESSAGE);
+        }
+
+        if(isISBNFEmpty){
+            titleField.setError(Config.ISBNF_EMPTY_MESSAGE);
+        }
+
+        if(isQuantityEmpty){
+            authorField.setError(Config.QUANTITY_EMPTY_MESSAGE);
         }
 
         if(isCategoryEmpty){
@@ -119,8 +135,8 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
             Toast.makeText(this, Config.IMAGE_URL_NULL_MESSAGE, Toast.LENGTH_SHORT).show();
         }
 
-        if(!isTitleEmpty && !isAuthorEmpty && !isNoRating && !isNullPhotoURL){
-            //bookDatabaseHelper.edit(getApplicationContext(),book_id,getTitle,getCategory,getLocation,getAuthor,getRating,coverPhotoURL,);
+        if(!isTitleEmpty && !isAuthorEmpty && !isISBNFEmpty && !isQuantityEmpty &&!isNoRating && !isNullPhotoURL){
+            bookDatabaseHelper.edit(getApplicationContext(),book_id,getTitle,getCategory,getLocation,getAuthor,getRating,coverPhotoURL,getISBNF,getQuantity);
         }
     }
 }

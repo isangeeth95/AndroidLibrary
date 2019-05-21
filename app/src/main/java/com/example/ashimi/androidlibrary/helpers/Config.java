@@ -16,6 +16,8 @@ public class Config {
     public static final String BOOK_AUTHOR="book_author";
     public static final String BOOK_CATEGORY="book_category";
     public static final String BOOK_LOCATION="book_location";
+    public static final String BOOK_ISBNF= "book_ISBNF";
+    public static final String Book_QUANTITY = "book_quantity";
     public static final String BOOK_RATING="book_rating";
     public static final String BOOK_COVER_PHOTO_URL="book_cover_photo_url";
 
@@ -23,6 +25,8 @@ public class Config {
     public final static String AUTHOR_EMPTY_MESSAGE="Author is required !";
     public final static String CATEGORY_EMPTY_MESSAGE="Category is required !";
     public final static String LOCATION_EMPTY_MESSAGE="Location is required !";
+    public final static String ISBNF_EMPTY_MESSAGE="ISBNF is required !";
+    public final static String QUANTITY_EMPTY_MESSAGE="quantity is required !";
     public final static String RATING_ZERO_MESSAGE="Give some rating !";
     public final static String IMAGE_URL_NULL_MESSAGE="Choose an image !";
     public final static String BOOK_ADD_SUCCESS_MSG="Book added successfully !";
