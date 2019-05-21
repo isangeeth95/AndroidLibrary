@@ -19,29 +19,8 @@ public class s_homepage extends AppCompatActivity {
     LinearLayout category_view;
     LinearLayout profile_view;
     LinearLayout inventory_view;
-    LinearLayout location;
-//    Toolbar toolbar;
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.activity_select_drawer, menu);
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()){
-//            case R.id.logout:
-//                FirebaseAuth.getInstance().signOut();
-//                finish();
-//                startActivity(new Intent(s_homepage.this, s_login.class));
-//                break;
-//        }
-//
-//        return true;
-//    }
+    LinearLayout logout;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +28,11 @@ public class s_homepage extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_s_homepage);
 
+        firebaseAuth = FirebaseAuth.getInstance();
         category_view = (LinearLayout) findViewById(R.id.see_category);
         profile_view = (LinearLayout) findViewById(R.id.profile_view);
         inventory_view = (LinearLayout) findViewById(R.id.inventory);
-        location = (LinearLayout)findViewById(R.id.profile_form);
-//        toolbar = (Toolbar)findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        logout = (LinearLayout)findViewById(R.id.logout);
 
 
 
@@ -67,12 +45,13 @@ public class s_homepage extends AppCompatActivity {
             }
         });
 
-        location.setOnClickListener(new View.OnClickListener() {
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent_login_view=new Intent(s_homepage.this, s_login.class);
-//                startActivity(intent_login_view);
-                Toast.makeText(s_homepage.this, "NO locations set",Toast.LENGTH_SHORT).show();
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(s_homepage.this, s_login.class));
+                Toast.makeText(s_homepage.this, "Successfully singed out", Toast.LENGTH_SHORT).show();
             }
         });
 

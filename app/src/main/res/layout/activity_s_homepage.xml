@@ -210,7 +210,7 @@
             android:layout_height="150dp"
             android:layout_margin="10dp">
             <LinearLayout
-                android:id="@+id/profile_form"
+                android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -219,14 +219,14 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundpurple"
-                    android:src="@drawable/ic_location_searching_black_24dp"
+                    android:src="@drawable/ic_exit_to_app_black_24dp"
                     android:padding="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Locations"/>
+                    android:text="Logout"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -236,7 +236,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Check the accessible Library locations"
+                    android:text="Logout and leave"
                     android:padding="5dp"
                     android:textColor="@android:color/darker_gray"/>
 

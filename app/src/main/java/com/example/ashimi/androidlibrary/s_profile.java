@@ -38,7 +38,7 @@ public class s_profile extends AppCompatActivity {
     CardView get_profileForm;
     DatabaseReference mData;
     ProgressDialog progressDialog;
-    ImageView image, deleteUser, logout;
+    ImageView image, deleteUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,16 +77,6 @@ public class s_profile extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(s_profile.this, "Sorry..... something is wrong.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firebaseAuth.signOut();
-                finish();
-                startActivity(new Intent(s_profile.this, s_login.class));
-                Toast.makeText(s_profile.this, "Successfully singed out", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -157,7 +147,6 @@ public class s_profile extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         image = (ImageView)findViewById(R.id.imageView2);
         deleteUser = (ImageView)findViewById(R.id.deleteUserImage);
-        logout = (ImageView)findViewById(R.id.logout);
         email_verification = (TextView)findViewById(R.id.email_verification);
     }
 
