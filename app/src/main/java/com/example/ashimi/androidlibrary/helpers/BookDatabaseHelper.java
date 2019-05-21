@@ -40,7 +40,7 @@ public class BookDatabaseHelper {
     }
 
     // add new book into the firebase database
-    public void add(final Context context,final String title, final String author,final String category,final String location, final float rating, final Uri coverPhotoURL){
+    public void add(final Context context,final String title, final String author,final String category,final String location, final float rating, final Uri coverPhotoURL, final String ISBN, final int q){
         databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE);
         Config.showToast(Config.BOOK_ADDING_MESSAGE,context);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -62,7 +62,7 @@ public class BookDatabaseHelper {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if(task.isSuccessful()){
                             Uri downloadURi=task.getResult();
-                            Book book=new Book(title,author,rating,location,category,downloadURi.toString());
+                            Book book=new Book(title,author,rating,location,category,downloadURi.toString(),ISBN,q);
                             databaseReference.child(uniqueKey).setValue(book);
                             Config.showToast(Config.BOOK_ADD_SUCCESS_MSG,context);
                         }
@@ -97,7 +97,7 @@ public class BookDatabaseHelper {
                         books.clear();
                         for(DataSnapshot snapshot:dataSnapshot.getChildren()){
                             Book book=snapshot.getValue(Book.class);
-                            book.setId(snapshot.getKey());
+                            //book.setId(snapshot.getKey());
                             books.add(book);
                         }
                         BookGalleryAdapter bookGalleryAdapter=new BookGalleryAdapter(books,context);
@@ -127,7 +127,7 @@ public class BookDatabaseHelper {
     }
 
     // edit book according to the id
-    public void edit(final Context context,final String id,final String title, final String author,final String category,final String location, final float rating, final Uri coverPhotoURL){
+    public void edit(final Context context,final String id,final String title, final String author,final String category,final String location, final float rating, final Uri coverPhotoURL,final String ISBN, final int q){
         databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE).child(id);
         Config.showToast(Config.BOOK_UPDATING_MESSAGE,context);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -148,7 +148,7 @@ public class BookDatabaseHelper {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if(task.isSuccessful()){
                             Uri downloadURi=task.getResult();
-                            Book book=new Book(title,author,rating,location,category,downloadURi.toString());
+                            Book book=new Book(title,author,rating,location,category,downloadURi.toString(),ISBN,q);
                             databaseReference.setValue(book);
                             Config.showToast(Config.BOOK_UPDATE_SUCCESS_MSG,context);
                         }
@@ -174,7 +174,7 @@ public class BookDatabaseHelper {
         builder.setPositiveButton(Config.BOOK_REMOVE_TEXT, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE).child(book.getId());
+                databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE).child(book.getISBM());
                 storageReference=FirebaseStorage.getInstance().getReferenceFromUrl(book.getCoverPhotoURL());
                 storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

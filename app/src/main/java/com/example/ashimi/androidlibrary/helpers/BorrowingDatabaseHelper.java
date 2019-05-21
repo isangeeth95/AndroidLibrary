@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -35,23 +36,17 @@ public class BorrowingDatabaseHelper {
         //this.context = context;
     }
 
-    public void newBorrow(final Borrowing newBorrower){
+    public void newBorrow(Borrowing newBorrower){
         //databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE);
         //Config.showToast(Config.BOOK_ADDING_MESSAGE,context);
 
         databaseReference=FirebaseDatabase.getInstance().getReference().child("Borrowing");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                maxID = (long) 1;
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     maxID = (dataSnapshot.getChildrenCount());
-
                 }
-                databaseReference.child(String.valueOf(maxID + 1)).setValue(newBorrower);
-
-
-
             }
 
             @Override
@@ -62,11 +57,24 @@ public class BorrowingDatabaseHelper {
 //        int id=1;
 //        databaseReference.child(String.valueOf( id )).child("user_name").setValue(user_name());
 //        databaseReference.child(String.valueOf( id )).child("isbn").setValue(user_name);
+        try{
+            Borrowing brw = new Borrowing(newBorrower);
 
-        if(maxID == null){
-            maxID = (long) 0;
+
+            brw.getISBN();
+            brw.getBorrowerID();
+            brw.getOutdate();
+
+            databaseReference.child(String.valueOf(maxID + 1)).setValue(brw);
         }
-        databaseReference.child(String.valueOf(maxID + 1)).setValue(newBorrower);
+        catch (Exception e){
+            Log.e("Error", "- in borrowing helper"+e.getLocalizedMessage());
+
+        }
+
+
+
+//        databaseReference.child(String.valueOf(maxID + 1)).setValue(newBorrower);
 
 
     }

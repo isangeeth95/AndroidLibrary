@@ -18,7 +18,7 @@ import com.example.ashimi.androidlibrary.helpers.BookDatabaseHelper;
 import com.example.ashimi.androidlibrary.helpers.Config;
 
 public class AddBook extends AppCompatActivity implements View.OnClickListener {
-    private EditText titleField,authorField,categoryField,locationField;
+    private EditText titleField,authorField,categoryField,locationField,ISBNField,quantityField;
     private RatingBar ratingField;
     private ImageView coverPhotoField;
     private Button addBook;
@@ -31,6 +31,8 @@ public class AddBook extends AppCompatActivity implements View.OnClickListener {
         setContentView( R.layout.activity_add_book);
         //setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ISBNField = (EditText)findViewById( R.id.book_ISBN_field);
+        quantityField = (EditText)findViewById( R.id.book_quantity);
         titleField=(EditText)findViewById( R.id.book_title_field);
         authorField=(EditText)findViewById( R.id.book_author_field);
         categoryField=(EditText)findViewById( R.id.book_category);
@@ -84,6 +86,12 @@ public class AddBook extends AppCompatActivity implements View.OnClickListener {
         boolean isNoRating=ratingField.getRating()==0;
         boolean isNullPhotoURL=coverPhotoURL==null;
 
+        String getISBN = ISBNField.getText().toString();
+        int getQuantity = Integer.valueOf(quantityField.getText().toString());
+
+        boolean isISBNEmpty = ISBNField.getText().toString().isEmpty();
+        boolean isQuantityEmpty = quantityField.getText().toString().isEmpty();
+
         if(isTitleEmpty){
             titleField.setError(Config.TITLE_EMPTY_MESSAGE);
         }
@@ -108,9 +116,17 @@ public class AddBook extends AppCompatActivity implements View.OnClickListener {
             Toast.makeText(this, Config.IMAGE_URL_NULL_MESSAGE, Toast.LENGTH_SHORT).show();
         }
 
-        if(!isTitleEmpty && !isAuthorEmpty && !isCategoryEmpty && !isLocationEmpty && !isNoRating && !isNullPhotoURL){
+        if(isISBNEmpty){
+            Toast.makeText(this, "ISBN empty", Toast.LENGTH_SHORT).show();
+        }
+
+        if(isQuantityEmpty){
+            Toast.makeText(this, "q empty", Toast.LENGTH_SHORT).show();
+        }
+
+        if(!isTitleEmpty && !isAuthorEmpty && !isCategoryEmpty && !isLocationEmpty && !isNoRating && !isNullPhotoURL && !isISBNEmpty && !isQuantityEmpty){
             bookDatabaseHelper=new BookDatabaseHelper(getApplicationContext());
-            bookDatabaseHelper.add(getApplicationContext(),getTitle,getAuthor,getLocation,getCategory,getRating,coverPhotoURL);
+            bookDatabaseHelper.add(getApplicationContext(),getTitle,getAuthor,getLocation,getCategory,getRating,coverPhotoURL,getISBN,getQuantity);
         }
     }
 }
