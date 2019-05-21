@@ -20,6 +20,7 @@ public class s_adminDashboard extends AppCompatActivity {
     LinearLayout lendingManage;
     ImageView logout;
     FirebaseAuth firebaseAuth;
+    LinearLayout EBookmanager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class s_adminDashboard extends AppCompatActivity {
         userManage = (LinearLayout) findViewById(R.id.userManage);
         logout = (ImageView)findViewById(R.id.logout);
         lendingManage = (LinearLayout) findViewById(R.id.lendingManage);
+        EBookmanager = (LinearLayout) findViewById(R.id.EBookmanager);
 
         bookManage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +64,14 @@ public class s_adminDashboard extends AppCompatActivity {
             public void onClick(View v) {
                 System.out.print("i am working");
                 startActivity(new Intent(s_adminDashboard.this, Activity_lending_main.class));
+            }
+        });
+
+        EBookmanager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.print("i am working");
+                startActivity(new Intent(s_adminDashboard.this, select.class));
             }
         });
 
