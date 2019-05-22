@@ -114,12 +114,12 @@ public class Activity_Issue_books extends AppCompatActivity {
 
                     ref = FirebaseDatabase.getInstance().getReference().child("Borrowing");
 
+
+
                     ref.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.exists()){
-                                maxID = (dataSnapshot.getChildrenCount());
-                            }
+
                         }
 
                         @Override
@@ -134,7 +134,7 @@ public class Activity_Issue_books extends AppCompatActivity {
                     newBrw.setOutdate(today.toString());
 
                     try{
-                        ref.child(String.valueOf(maxID + 1)).setValue(newBrw);
+                        ref.push().setValue(newBrw);
                         finish();
                         Toast.makeText(Activity_Issue_books.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
                     }
