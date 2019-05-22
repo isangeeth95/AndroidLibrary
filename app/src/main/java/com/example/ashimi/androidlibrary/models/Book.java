@@ -1,21 +1,18 @@
 package com.example.ashimi.androidlibrary.models;
 
 public class Book {
-    private String ISBM,title,author,category,location,coverPhotoURL;
+    private String id,title,author,category,location,coverPhotoURL;
     private float rating;
-    private int quantity;
 
     public Book(){}
 
-    public Book(String title, String author, float rating,String location,String category ,String coverPhotoURL,String ISBM, int quantity) {
+    public Book(String title, String author, float rating,String location,String category ,String coverPhotoURL) {
         this.title = title;
         this.author = author;
         this.location = location;
         this.rating = rating;
         this.category = category;
         this.coverPhotoURL = coverPhotoURL;
-        this.ISBM = ISBM;
-        this.quantity = quantity;
     }
 
     public String getCategory() {
@@ -34,29 +31,13 @@ public class Book {
         this.location = location;
     }
 
-    public String getISBM() {
-        return ISBM;
+    public String getId() {
+        return id;
     }
 
-    public void setISBM(String ISBM) {
-        this.ISBM = ISBM;
+    public void setId(String id) {
+        this.id = id;
     }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    //    public String getId() {
-//        return id;
-//    }
-//
-//    public void setId(String id) {
-//        this.id = id;
-//    }
 
     public String getTitle() {
         return title;

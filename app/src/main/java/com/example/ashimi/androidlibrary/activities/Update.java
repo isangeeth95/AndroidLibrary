@@ -31,7 +31,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_update);
-       // setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        // setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         bookDatabaseHelper=new BookDatabaseHelper(this);
         titleField=(EditText)findViewById( R.id.book_title_field);
@@ -120,7 +120,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
         }
 
         if(!isTitleEmpty && !isAuthorEmpty && !isNoRating && !isNullPhotoURL){
-            //bookDatabaseHelper.edit(getApplicationContext(),book_id,getTitle,getCategory,getLocation,getAuthor,getRating,coverPhotoURL,);
+            bookDatabaseHelper.edit(getApplicationContext(),book_id,getTitle,getCategory,getLocation,getAuthor,getRating,coverPhotoURL);
         }
     }
 }

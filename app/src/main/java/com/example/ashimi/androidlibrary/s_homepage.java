@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
+import com.example.ashimi.androidlibrary.activities.MainActivity;
+import com.example.ashimi.androidlibrary.activities.User_view_book;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -58,7 +60,7 @@ public class s_homepage extends AppCompatActivity {
         inventory_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_inventory_view=new Intent(s_homepage.this, Inventory_main.class);
+                Intent intent_inventory_view=new Intent(s_homepage.this, User_view_book.class);
                 startActivity(intent_inventory_view);
             }
         });

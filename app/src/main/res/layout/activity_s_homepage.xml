@@ -168,15 +168,14 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:background="@drawable/cerclebackgroundyellow"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_attach_file_black_24dp" />
+                    android:background="@drawable/book"
+                    android:padding="10dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Links"
+                    android:text="Books"
                     android:textStyle="bold" />
 
                 <View
@@ -190,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Check the usable links"
+                    android:text="View the books which are available"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>

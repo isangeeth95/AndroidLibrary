@@ -116,17 +116,6 @@ public class Activity_Issue_books extends AppCompatActivity {
 
 
 
-                    ref.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
 
                     //for now
                     newBrw.setBorrowerID(qrCodes.valueAt(0).displayValue);
@@ -134,14 +123,27 @@ public class Activity_Issue_books extends AppCompatActivity {
                     newBrw.setOutdate(today.toString());
 
                     try{
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                finish();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                         ref.push().setValue(newBrw);
-                        finish();
+
                         Toast.makeText(Activity_Issue_books.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
                     }
                     catch (Exception e){
                         Log.e("Error", e.getLocalizedMessage());
                         Toast.makeText(Activity_Issue_books.this,"error"+ e, Toast.LENGTH_LONG).show();
                     }
+
+
 
 //                    Intent intent = new Intent();
 //                    intent.putExtra("qrValue",qrCodes.valueAt(0).displayValue);

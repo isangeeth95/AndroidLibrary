@@ -225,7 +225,7 @@
                         android:layout_height="100dp"
                         android:contentDescription="TODO"
                         android:padding="10dp"
-                        android:src="@drawable/book" />
+                        android:src="@drawable/ebook" />
 
                     <TextView
                         android:layout_width="wrap_content"

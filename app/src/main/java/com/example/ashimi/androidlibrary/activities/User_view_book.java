@@ -1,7 +1,5 @@
 package com.example.ashimi.androidlibrary.activities;
 
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +15,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class User_view_book extends AppCompatActivity  {
     private GridView gallery;
     private BookGalleryAdapter bookGalleryAdapter;
     private ArrayList<Book> books;
@@ -29,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_main);
+        setContentView( R.layout.book_view_user);
         // setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         loader=(AVLoadingIndicatorView)findViewById( R.id.loader);
         gallery=(GridView)findViewById( R.id.book_gallery);
@@ -41,15 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         checkInternet=(TextView)findViewById( R.id.check_connectivity);
         gallery.setAdapter(bookGalleryAdapter);
         bookDatabaseHelper.all(checkInternet,check_availibity,loader,books,this,gallery);
-        addBook.setOnClickListener(this);
-    }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.add_book:
-                startActivity(new Intent( MainActivity.this,AddBook.class));
-                break;
-        }
+
     }
 }

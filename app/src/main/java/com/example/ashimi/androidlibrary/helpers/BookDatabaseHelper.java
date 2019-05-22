@@ -38,20 +38,14 @@ public class BookDatabaseHelper {
     public BookDatabaseHelper(Context context){
         this.context=context;
     }
-    long maxID=0;
+
     // add new book into the firebase database
-    public void add(final Context context,final String title, final String author,final String category,final String location, final float rating, final Uri coverPhotoURL, final String ISBN, final int q){
-//        databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE);
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Book");
+    public void add(final Context context,final String title, final String author,final String category,final String location, final float rating, final Uri coverPhotoURL){
+        databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE);
         Config.showToast(Config.BOOK_ADDING_MESSAGE,context);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-
-                if(dataSnapshot.exists()){
-                    maxID = (dataSnapshot.getChildrenCount());
-                }
-
                 final String uniqueKey=databaseReference.push().getKey();
                 storageReference=FirebaseStorage.getInstance().getReference().child(uniqueKey).child(Config.STORAGE_PATH+coverPhotoURL.getLastPathSegment());
                 StorageTask storageTask=storageReference.putFile(coverPhotoURL);
@@ -68,9 +62,8 @@ public class BookDatabaseHelper {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if(task.isSuccessful()){
                             Uri downloadURi=task.getResult();
-                            Book book=new Book(title,author,rating,location,category,downloadURi.toString(),ISBN,q);
-                            databaseReference.child(String.valueOf(maxID + 1)).setValue(book);
-//                            databaseReference.child(uniqueKey).setValue(book);
+                            Book book=new Book(title,author,rating,location,category,downloadURi.toString());
+                            databaseReference.child(uniqueKey).setValue(book);
                             Config.showToast(Config.BOOK_ADD_SUCCESS_MSG,context);
                         }
                         Intent intent=new Intent(context, MainActivity.class);
@@ -104,7 +97,7 @@ public class BookDatabaseHelper {
                         books.clear();
                         for(DataSnapshot snapshot:dataSnapshot.getChildren()){
                             Book book=snapshot.getValue(Book.class);
-                            //book.setId(snapshot.getKey());
+                            book.setId(snapshot.getKey());
                             books.add(book);
                         }
                         BookGalleryAdapter bookGalleryAdapter=new BookGalleryAdapter(books,context);
@@ -134,14 +127,13 @@ public class BookDatabaseHelper {
     }
 
     // edit book according to the id
-    public void edit(final Context context,final String id,final String title, final String author,final String category,final String location, final float rating, final Uri coverPhotoURL,final String ISBN, final int q){
+    public void edit(final Context context,final String id,final String title, final String author,final String category,final String location, final float rating, final Uri coverPhotoURL){
         databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE).child(id);
         Config.showToast(Config.BOOK_UPDATING_MESSAGE,context);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                final String uniqueKey=databaseReference.push().getKey();
-                storageReference=FirebaseStorage.getInstance().getReference().child(uniqueKey).child(Config.STORAGE_PATH+coverPhotoURL.getLastPathSegment());
+                storageReference=FirebaseStorage.getInstance().getReference().child(id).child(Config.STORAGE_PATH+coverPhotoURL.getLastPathSegment());
                 StorageTask storageTask=storageReference.putFile(coverPhotoURL);
                 Task<Uri> uriTask=storageTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot,Task<Uri>>() {
                     @Override
@@ -156,8 +148,8 @@ public class BookDatabaseHelper {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if(task.isSuccessful()){
                             Uri downloadURi=task.getResult();
-                            Book book=new Book(title,author,rating,location,category,downloadURi.toString(),ISBN,q);
-                            databaseReference.child(uniqueKey).setValue(book);
+                            Book book=new Book(title,author,rating,location,category,downloadURi.toString());
+                            databaseReference.setValue(book);
                             Config.showToast(Config.BOOK_UPDATE_SUCCESS_MSG,context);
                         }
                         Intent intent=new Intent(context, MainActivity.class);
@@ -166,7 +158,6 @@ public class BookDatabaseHelper {
                     }
                 });
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -183,7 +174,7 @@ public class BookDatabaseHelper {
         builder.setPositiveButton(Config.BOOK_REMOVE_TEXT, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE).child(book.getISBM());
+                databaseReference=FirebaseDatabase.getInstance().getReference(Config.DATABASE_REFERENCE).child(book.getId());
                 storageReference=FirebaseStorage.getInstance().getReferenceFromUrl(book.getCoverPhotoURL());
                 storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

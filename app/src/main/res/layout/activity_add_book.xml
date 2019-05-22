@@ -15,19 +15,11 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-
-                <EditText
-                    android:id="@+id/book_ISBN_field"
-                    android:hint="Enter book ISBN"
-                    android:padding="15dp"
-                    android:layout_margin="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
 
                 <EditText
                     android:id="@+id/book_title_field"
@@ -47,15 +39,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-            <EditText
-                android:id="@+id/book_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp"
-                android:hint="Enter book category"
-                android:padding="15dp" />
+                <EditText
+                    android:id="@+id/book_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:hint="Enter book category"
+                    android:padding="15dp" />
 
                 <EditText
                     android:id="@+id/book_location"
@@ -65,16 +57,6 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginBottom="15dp"
                     android:hint="Enter Location"
-                    android:padding="15dp" />
-
-                <EditText
-                    android:id="@+id/book_quantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:hint="Enter Quantity"
                     android:padding="15dp" />
 
                 <RatingBar
@@ -113,6 +95,6 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
-    </ScrollView>
+        </ScrollView>
     </android.support.v7.widget.CardView>
 </LinearLayout>

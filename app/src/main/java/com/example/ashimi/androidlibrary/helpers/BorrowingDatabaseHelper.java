@@ -1,29 +1,15 @@
 package com.example.ashimi.androidlibrary.helpers;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
-import com.example.ashimi.androidlibrary.activities.MainActivity;
-import com.example.ashimi.androidlibrary.models.Book;
 import com.example.ashimi.androidlibrary.models.Borrowing;
-import com.example.ashimi.androidlibrary.s_profile;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
-import com.google.firebase.storage.UploadTask;
 
 public class BorrowingDatabaseHelper {
     //private Context context;

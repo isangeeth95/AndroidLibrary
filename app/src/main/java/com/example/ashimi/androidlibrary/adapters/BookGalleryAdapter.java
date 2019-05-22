@@ -83,7 +83,7 @@ public class BookGalleryAdapter extends BaseAdapter {
                         switch (item.getItemId()){
                             case R.id.edit:
                                 Intent intent=new Intent(context,Update.class);
-                                intent.putExtra(Config.BOOK_ID,book.getISBM());
+                                intent.putExtra(Config.BOOK_ID,book.getId());
                                 intent.putExtra(Config.BOOK_TITLE,book.getTitle());
                                 intent.putExtra(Config.BOOK_AUTHOR,book.getAuthor());
                                 intent.putExtra(Config.BOOK_CATEGORY,book.getCategory());
@@ -94,7 +94,7 @@ public class BookGalleryAdapter extends BaseAdapter {
                                 return true;
                             case R.id.delete:
                                 bookDatabaseHelper.remove(context,book);
-;                                return true;
+                                ;                                return true;
                             default:
                                 return false;
                         }

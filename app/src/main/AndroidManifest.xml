@@ -34,10 +34,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Inventory_main" />
-        <activity android:name=".activities.TestEdit"/>
-        <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.AddBook" />
-        <activity android:name=".activities.Update" />
         <activity android:name=".CATEGORIES" />
         <activity android:name=".second" />
         <activity android:name=".third" />
@@ -52,6 +48,10 @@
         <activity android:name=".Activity_lending_main" />
         <activity android:name=".Activity_Borrowing"></activity>
         <activity android:name=".Activity_Issue_books"></activity>
+        <activity android:name=".activities.AddBook"/>
+        <activity android:name=".activities.MainActivity"/>
+        <activity android:name=".activities.Update"/>
+        <activity android:name=".activities.User_view_book"/>
 
 
         <activity android:name=".Sample"/>
