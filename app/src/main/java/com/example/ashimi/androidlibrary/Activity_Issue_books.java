@@ -81,8 +81,8 @@ public class Activity_Issue_books extends AppCompatActivity {
                                     new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA);
                         }
                     }
-
                     cameraSource.start(holder);
+
                     Log.d("camError","has permission");
                 } catch (IOException e) {
                     e.printStackTrace();

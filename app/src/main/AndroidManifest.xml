@@ -3,6 +3,7 @@
     package="com.example.ashimi.androidlibrary">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -23,7 +24,6 @@
         <activity android:name=".s_adminManageUsers" />
         <activity android:name=".s_adminDashboard" />
         <activity android:name=".s_register" />
-        <activity android:name=".s_register2" />
         <activity android:name=".s_homepage" />
         <activity android:name=".s_profile" />
         <activity android:name=".s_login">
@@ -55,6 +55,10 @@
 
 
         <activity android:name=".Sample"/>
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode"/>
+
     </application>
 
 </manifest>
